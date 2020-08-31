@@ -19,7 +19,7 @@ public class App {
         
         ControladorIngreso  controlador = new ControladorIngreso(usuario, fIngreso, fRegistro, frrhh, vvacante);
         controlador.iniciar();
-         System. out. println(" Hola");       
+                
     }
     
    
