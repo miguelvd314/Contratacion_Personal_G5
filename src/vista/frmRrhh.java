@@ -41,13 +41,14 @@ public class frmRrhh extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Experiencia minima");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 113, 31));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 113, 31));
 
         t1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +71,7 @@ public class frmRrhh extends javax.swing.JFrame {
                 guardarActionPerformed(evt);
             }
         });
-        getContentPane().add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 235, 91, -1));
+        getContentPane().add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 91, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre de la vacante");
@@ -88,7 +89,7 @@ public class frmRrhh extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 97, 31));
 
         cancelar.setText("Cancelar");
-        getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 235, -1, -1));
+        getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Codigo");
@@ -109,7 +110,10 @@ public class frmRrhh extends javax.swing.JFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 38, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/abstract-tech-background-vector.jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 300));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
+
+        jTextField1.setText("jTextField1");
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,6 +181,7 @@ public class frmRrhh extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField jTextField1;
     public javax.swing.JTextField t1;
     public javax.swing.JTextField t2;
     public javax.swing.JTextField t3;

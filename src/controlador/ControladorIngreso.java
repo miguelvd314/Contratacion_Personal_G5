@@ -42,11 +42,8 @@ public class ControladorIngreso {
                     if(usuario.usuario[i].getNombre().equals(fIngreso.txtNombre.getText())&&usuario.usuario[i].getDni().equals(fIngreso.txtContra.getText())){
                         JOptionPane.showMessageDialog(null,"Usuario válido");
                         a = true;
-                        vcontrolador.iniciar();;
-                        fIngreso.txtNombre.setText("");
-                        fIngreso.txtContra.setText("");
-                        fIngreso.setVisible(false);
-                        
+                     
+                  
                     }
                 }
                 if(!a){
