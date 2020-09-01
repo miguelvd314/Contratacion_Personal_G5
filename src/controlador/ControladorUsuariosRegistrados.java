@@ -7,6 +7,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
+import modelo.VectorUsuario;
 import vista.frmUsuariosRegistrados;
 
 /**
@@ -15,6 +17,7 @@ import vista.frmUsuariosRegistrados;
  */
 public class ControladorUsuariosRegistrados {
     frmUsuariosRegistrados fURegistrados;
+    VectorUsuario vUsuario;
     
     public ControladorUsuariosRegistrados(frmUsuariosRegistrados fURegistrados){
         this.fURegistrados = fURegistrados;
@@ -53,7 +56,8 @@ public class ControladorUsuariosRegistrados {
     }
     
     private void llenarTabla(){
-        
+        DefaultTableModel modelotabla = new DefaultTableModel(this.vUsuario.getDatos(),this.vUsuario.getCabecera());
+        this.fURegistrados.tblUsuarios.setModel(modelotabla);
     }
     
 }
