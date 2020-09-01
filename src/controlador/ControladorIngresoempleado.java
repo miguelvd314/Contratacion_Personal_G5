@@ -14,6 +14,7 @@ import vista.frmIngreso;
 import vista.frmRegistro;
 import vista.frmRrhh;
 import vista.frmEmpleado;
+import vista.frmUsuariosRegistrados;
 /**
  *
  * @author Master
@@ -25,15 +26,18 @@ public class ControladorIngresoempleado {
     frmRrhh frrhh;
     Vectorvacante vvacante;
     frmEmpleado fempleado;
+    frmUsuariosRegistrados fURegistrados;
 
-    public ControladorIngresoempleado(VectorUsuario usuario, frmIngreso fIngreso, frmRrhh frrhh, Vectorvacante vvacante, frmEmpleado fempleado) {
+    public ControladorIngresoempleado(VectorUsuario usuario, frmIngreso fIngreso, frmRrhh frrhh, Vectorvacante vvacante, frmEmpleado fempleado, frmUsuariosRegistrados fURegistrados) {
         this.usuario = usuario;
         this.fIngreso = fIngreso;
         this.frrhh = frrhh;
         this.vvacante = vvacante;
         this.fempleado = fempleado;
+        this.fURegistrados = fURegistrados;
     
         ControladorVacante vcontrolador = new ControladorVacante(frrhh, fIngreso, fRegistro, vvacante);
+        ControladorUsuariosRegistrados uRControlador = new ControladorUsuariosRegistrados(fURegistrados);
 
   this.fempleado.Aceptar.addActionListener(new ActionListener(){
             @Override
@@ -44,6 +48,8 @@ public class ControladorIngresoempleado {
                         JOptionPane.showMessageDialog(null,"Usuario válido");
                         a = true;
                              vcontrolador.iniciar();
+                             fURegistrados.setVisible(true);
+                             
                              limpiar();
                               fempleado.setVisible(false);
                     }
