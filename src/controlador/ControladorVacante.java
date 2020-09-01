@@ -39,39 +39,29 @@ public class ControladorVacante {
             public void actionPerformed(ActionEvent ae) {
                 vvacante.agregarVacante(frrhh.t1.getText(), frrhh.t2.getText(), frrhh.t3.getText(), frrhh.t4.getText());
                 frrhh.setVisible(false);
-                    frrhh.t1.setText("");
-                    frrhh.t2.setText("");
-                    frrhh.t3.setText("");
-                    frrhh.t4.setText("");
+                    limpiar();
                     frrhh.setVisible(true);
-                    
-                    
             }
-        
-         
-                 });
+               });
          this.frrhh.cancelar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 frrhh.setVisible(false);
-                frrhh.t1.setText("");
-                frrhh.t2.setText("");
-                frrhh.t3.setText("");
-                frrhh.t4.setText("");
+               limpiar();
                 fIngreso.setVisible(true);
             }            
         });
-       
-    
-  
-    
-   
-    
-   
-    
+ 
 }
 public void iniciar(){
         this.frrhh.setVisible(true);
         this.frrhh.setLocationRelativeTo(null);
-        
-    }}
+               
+    }
+public void limpiar(){
+ frrhh.t1.setText("");
+                frrhh.t2.setText("");
+                frrhh.t3.setText("");
+                frrhh.t4.setText("");
+}
+}

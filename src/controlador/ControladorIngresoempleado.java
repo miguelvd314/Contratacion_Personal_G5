@@ -40,12 +40,11 @@ public class ControladorIngresoempleado {
             public void actionPerformed(ActionEvent e) {
                 boolean a = false;
                 
-                    if(usuario.usuario[0].getNombre().equals(fempleado.usuario.getText())&&usuario.usuario[0].getDni().equals(fempleado.psw.getText())){
+                    if(usuario.validarUsuario(fempleado.usuario.getText(),fempleado.psw.getText())){
                         JOptionPane.showMessageDialog(null,"Usuario válido");
                         a = true;
                              vcontrolador.iniciar();
-                             fempleado.usuario.setText("");
-                             fempleado.psw.setText("");
+                             limpiar();
                               fempleado.setVisible(false);
                     }
                 if(!a){
@@ -57,8 +56,7 @@ public class ControladorIngresoempleado {
    
 
   }
-    
-           
+              
      public void iniciar(){
         this.fempleado.setVisible(true);
         this.fempleado.setSize(370, 450);
@@ -67,5 +65,10 @@ public class ControladorIngresoempleado {
         
         this.fempleado.setLocationRelativeTo(null);
     }
-    
+  public void limpiar()   {
+  
+             fempleado.usuario.setText("");
+             fempleado.psw.setText("");
+  
+  }
 }

@@ -23,9 +23,7 @@ public class ControladorRegistro {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fRegistro.setVisible(false);
-                fRegistro.txtApellido.setText("");
-                fRegistro.txtNombre.setText("");
-                fRegistro.txtDni.setText("");
+                limpiar();
                 fIngreso.setVisible(true);
             }            
         });
@@ -38,9 +36,7 @@ public class ControladorRegistro {
                 else{
                     usuario.agregarCandidato(fRegistro.txtNombre.getText(), fRegistro.txtApellido.getText(), fRegistro.txtDni.getText());
                     fRegistro.setVisible(false);
-                    fRegistro.txtApellido.setText("");
-                    fRegistro.txtNombre.setText("");
-                    fRegistro.txtDni.setText("");
+                    limpiar();
                     fIngreso.setVisible(true);
                 }
             }
@@ -50,5 +46,12 @@ public class ControladorRegistro {
     public void iniciar(){
         this.fRegistro.setVisible(true);
         this.fRegistro.setLocationRelativeTo(null);
+    }
+    public void limpiar(){
+    fRegistro.txtApellido.setText("");
+    fRegistro.txtNombre.setText("");
+    fRegistro.txtDni.setText("");
+    
+      
     }
 }
