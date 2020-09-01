@@ -20,7 +20,6 @@ public class App {
         usuario.usuarioempleado();
         ControladorIngreso  controlador = new ControladorIngreso(usuario, fIngreso, fRegistro, frrhh, vvacante, fEmpleado);
         controlador.iniciar();
-        System.out.println("prueba");
                 
     }
     

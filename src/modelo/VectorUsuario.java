@@ -1,6 +1,8 @@
 
 package modelo;
 
+import javax.swing.JOptionPane;
+
 public class VectorUsuario {
     public Usuario usuario[];
     Usuario aux;
@@ -46,5 +48,18 @@ public class VectorUsuario {
     public void usuarioempleado(){
         agregarCandidato("empleado", "empleado", "123");
     
+    }
+    
+    public boolean validarDni(String codigo){
+        boolean resultado = true;
+        
+        for(int i=0;i<usuario.length;i++){
+            if(codigo.equals(usuario[i].getDni())){
+                JOptionPane.showMessageDialog(null,"DNI ya registrado");
+                resultado = false;
+            }
+        }
+        
+        return resultado;
     }
 }

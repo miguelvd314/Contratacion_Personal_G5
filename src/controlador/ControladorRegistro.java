@@ -19,7 +19,6 @@ public class ControladorRegistro {
         this.fRegistro = fRegistro;
         this.fIngreso = fIngreso;
         
-        
         this.fRegistro.cancelar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,22 +32,16 @@ public class ControladorRegistro {
         this.fRegistro.aceptar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean a = false;
-                for(int i=0;i<usuario.usuario.length;i++){
-                    if(fRegistro.txtDni.getText().equals(usuario.usuario[i].getDni())){
-                        a = true;
-                        JOptionPane.showMessageDialog(null,"DNI ya registrado");
-                    }
-                }
-                if(!a){
+                String codigo = fRegistro.txtDni.getText();
+                
+                if(usuario.validarDni(codigo)){
                     usuario.agregarCandidato(fRegistro.txtNombre.getText(), fRegistro.txtApellido.getText(), fRegistro.txtDni.getText());
                     fRegistro.setVisible(false);
                     fRegistro.txtApellido.setText("");
                     fRegistro.txtNombre.setText("");
                     fRegistro.txtDni.setText("");
                     fIngreso.setVisible(true);
-                }
-                
+                }                
             }
         });
     }
