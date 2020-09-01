@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 public class VectorUsuario {
     public Usuario usuario[];
     Usuario aux;
+    private final String[] cabecera =  {"DNI","NOMBRE",
+                            "APELLIDO", "ESTADO"};
     
     public VectorUsuario(){
         usuario = new Usuario[0];
@@ -90,5 +92,97 @@ public class VectorUsuario {
         }
         
         return resultado;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public Object[][] getDatos(){
+        Object resultado[][] = new Object[0][4];
+        
+            for(int i = 0; i< usuario.length;i++){
+                resultado[i][0] = usuario[i].getNombre();
+                resultado[i][1] = usuario[i].getApellido();
+                resultado[i][2] = usuario[i].getDni();
+                resultado[i][3] = "ACTIVO";
+            }
+        
+        return resultado;
+    }
+
+    public String[] getCabecera() {
+        return cabecera;
     }
 }

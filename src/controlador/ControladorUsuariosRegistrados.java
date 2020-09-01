@@ -52,4 +52,8 @@ public class ControladorUsuariosRegistrados {
         });
     }
     
+    private void llenarTabla(){
+        
+    }
+    
 }
