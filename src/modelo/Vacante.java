@@ -10,31 +10,31 @@ package modelo;
  * @author Master
  */
 public class Vacante {
-    private int tiempo;
+    private String tiempo;
     private String nombre;
-    private int salario;
-    private int codigo;
+    private String salario;
+    private String codigo;
 
-    public Vacante(int tiempo, String nombre, int salario,int codigo) {
+    public Vacante(String tiempo, String nombre, String salario,String codigo) {
         this.tiempo = tiempo;
         this.nombre = nombre;
         this.salario = salario;
         this.codigo = codigo;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public int getTiempo() {
+    public String getTiempo() {
         return tiempo;
     }
 
-    public void setTiempo(int tiempo) {
+    public void setTiempo(String tiempo) {
         this.tiempo = tiempo;
     }
 
@@ -46,11 +46,11 @@ public class Vacante {
         this.nombre = nombre;
     }
 
-    public int getSalario() {
+    public String getSalario() {
         return salario;
     }
 
-    public void setSalario(int salario) {
+    public void setSalario(String salario) {
         this.salario = salario;
     }
     

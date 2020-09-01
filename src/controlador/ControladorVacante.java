@@ -37,7 +37,7 @@ public class ControladorVacante {
          this.frrhh.guardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                vvacante.agregarVacante(/*frrhh.t1.*/Integer.parseInt(frrhh.t1.getText()), frrhh.t2.getText(), Integer.parseInt(frrhh.t3.getText()), Integer.parseInt(frrhh.t4.getText()));
+                vvacante.agregarVacante(frrhh.t1.getText(), frrhh.t2.getText(), frrhh.t3.getText(), frrhh.t4.getText());
                 frrhh.setVisible(false);
                     frrhh.t1.setText("");
                     frrhh.t2.setText("");

@@ -18,13 +18,13 @@ public class Vectorvacante {
         vacante = new Vacante[0];
     }
     
-    public Vacante leerVacante(int tiempo, String nombre,  int salario, int codigo){
+    public Vacante leerVacante(String tiempo, String nombre,  String salario, String codigo){
                 
         Vacante a = new Vacante(tiempo,nombre,  salario, codigo);
         return a;
     }
     
-    public void agregarVacante(int tiempo, String nombre,  int salario,int codigo) {
+    public void agregarVacante(String tiempo, String nombre,  String salario,String codigo) {
         int i = vacante.length;
         Vacante a;
         
