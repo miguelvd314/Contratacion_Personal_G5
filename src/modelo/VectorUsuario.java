@@ -46,15 +46,24 @@ public class VectorUsuario {
         return a;
     }
     
-    public boolean validarUsuario(String nombre, String dni){
+    public boolean validarUsuario(String nombre, String dni, int b){
         boolean a = false;
-        for(int i=0;i<usuario.length;i++){
+        if(b==0){
+        for(int i=1;i<usuario.length;i++){
             if(usuario[i].getNombre().equals(nombre)&&usuario[i].getDni().equals(dni)){
                 a = true;
             }
+        }}
+        else{
+        if(usuario[0].getNombre().equals(nombre)&&usuario[0].getDni().equals(dni)){
+                a = true;
+           
+        }
         }
         return a;
+    
     }
+
 
     private void redimensionar1() {
         int n = usuario.length;

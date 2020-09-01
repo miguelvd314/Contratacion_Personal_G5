@@ -41,7 +41,7 @@ public class ControladorIngreso {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                if(usuario.validarUsuario(fIngreso.txtNombre.getText(), fIngreso.txtContra.getText())){
+                if(usuario.validarUsuario(fIngreso.txtNombre.getText(), fIngreso.txtContra.getText(),0)){
                     JOptionPane.showMessageDialog(null,"Usuario válido");
                 }
                 else{
@@ -54,8 +54,7 @@ public class ControladorIngreso {
             public void actionPerformed(ActionEvent e) {
                 //RegistroControlador  rcontrolador = new RegistroControlador(usuario, fRegistro, fIngreso);
                 rcontrolador.iniciar();
-                fIngreso.txtNombre.setText("");
-                fIngreso.txtContra.setText("");
+                limpiar();
                 fIngreso.setVisible(false);
                 
             }   
@@ -63,10 +62,8 @@ public class ControladorIngreso {
         this.fIngreso.Empleado.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
                 econtrolador.iniciar();
-                fIngreso.txtNombre.setText("");
-                fIngreso.txtContra.setText("");
+                limpiar();
                 fIngreso.setVisible(false);
             }
         });
@@ -81,5 +78,11 @@ public class ControladorIngreso {
         this.fIngreso.setResizable(false);
         
         this.fIngreso.setLocationRelativeTo(null);
+         
+    }
+    public void limpiar(){
+       fIngreso.txtNombre.setText("");
+       fIngreso.txtContra.setText("");
+    
     }
 }

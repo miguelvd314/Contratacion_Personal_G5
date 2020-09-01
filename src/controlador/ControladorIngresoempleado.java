@@ -40,7 +40,7 @@ public class ControladorIngresoempleado {
             public void actionPerformed(ActionEvent e) {
                 boolean a = false;
                 
-                    if(usuario.validarUsuario(fempleado.usuario.getText(),fempleado.psw.getText())){
+                    if(usuario.validarUsuario(fempleado.usuario.getText(),fempleado.psw.getText(),1)){
                         JOptionPane.showMessageDialog(null,"Usuario válido");
                         a = true;
                              vcontrolador.iniciar();
