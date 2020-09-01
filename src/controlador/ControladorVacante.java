@@ -29,6 +29,7 @@ public class ControladorVacante {
         this.frrhh = frrhh;
         this.fIngreso = fIngreso;
         this.fRegistro = fRegistro;
+        this.vvacante = vvacante;
        
     
         
