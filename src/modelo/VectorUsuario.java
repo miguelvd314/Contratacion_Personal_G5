@@ -43,5 +43,8 @@ public class VectorUsuario {
         }
         usuario = y;
     }
+    public void usuarioempleado(){
+        agregarCandidato("empleado", "empleado", "123");
     
+    }
 }

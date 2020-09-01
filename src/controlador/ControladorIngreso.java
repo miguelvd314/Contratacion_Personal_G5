@@ -10,6 +10,7 @@ import modelo.Vectorvacante;
 import vista.frmIngreso;
 import vista.frmRegistro;
 import vista.frmRrhh;
+import vista.frmEmpleado;
 
 public class ControladorIngreso {
     VectorUsuario usuario;
@@ -17,17 +18,19 @@ public class ControladorIngreso {
     frmRegistro fRegistro;
     frmRrhh frrhh;
     Vectorvacante vvacante;
+    frmEmpleado fEmpleado;
     
     
-    public ControladorIngreso(VectorUsuario usuario, frmIngreso fIngreso, frmRegistro fRegistro,frmRrhh frrhh,Vectorvacante vvacante){
+    public ControladorIngreso(VectorUsuario usuario, frmIngreso fIngreso, frmRegistro fRegistro,frmRrhh frrhh,Vectorvacante vvacante,frmEmpleado fEmpleado){
         this.usuario = usuario;
         this.fIngreso = fIngreso;
         this.fRegistro = fRegistro;
         this.frrhh = frrhh;
         this.vvacante = vvacante;
+        this.fEmpleado = fEmpleado;
         ControladorRegistro  rcontrolador = new ControladorRegistro(usuario, fRegistro, fIngreso);
         ControladorVacante vcontrolador = new ControladorVacante(frrhh, fIngreso, fRegistro, vvacante);
-        
+        ControladorIngresoempleado econtrolador = new ControladorIngresoempleado(usuario, fIngreso, frrhh, vvacante, fEmpleado);
         this.fIngreso.cancelar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,7 +66,16 @@ public class ControladorIngreso {
                 
             }   
         });
-        
+        this.fIngreso.Empleado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+                econtrolador.iniciar();
+                fIngreso.txtNombre.setText("");
+                fIngreso.txtContra.setText("");
+                fIngreso.setVisible(false);
+            }
+        });
         
         
     }

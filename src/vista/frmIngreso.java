@@ -40,6 +40,7 @@ public class frmIngreso extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtContra = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
+        Empleado = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,6 +105,10 @@ public class frmIngreso extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(130, 70, 130, 140);
 
+        Empleado.setText("Empleado de RRHH");
+        getContentPane().add(Empleado);
+        Empleado.setBounds(110, 390, 130, 23);
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/abstract-tech-background-vector.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 370, 470);
@@ -165,6 +170,7 @@ public class frmIngreso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Empleado;
     public javax.swing.JButton aceptar;
     public javax.swing.JButton cancelar;
     private javax.swing.JLabel jLabel1;

@@ -5,7 +5,7 @@ import vista.frmIngreso;
 import vista.frmRegistro;
 import modelo.Vectorvacante;
 import vista.frmRrhh;
-
+import vista.frmEmpleado;
 
 
 public class App {
@@ -14,10 +14,11 @@ public class App {
         VectorUsuario usuario = new VectorUsuario();
         frmIngreso fIngreso = new frmIngreso();
         frmRegistro fRegistro = new frmRegistro();
+        frmEmpleado fEmpleado = new frmEmpleado();
         Vectorvacante vvacante  = new Vectorvacante();
         frmRrhh frrhh = new frmRrhh() ;
-        
-        ControladorIngreso  controlador = new ControladorIngreso(usuario, fIngreso, fRegistro, frrhh, vvacante);
+        usuario.usuarioempleado();
+        ControladorIngreso  controlador = new ControladorIngreso(usuario, fIngreso, fRegistro, frrhh, vvacante, fEmpleado);
         controlador.iniciar();
     
                 
