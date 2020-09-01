@@ -40,19 +40,13 @@ public class ControladorIngreso {
         this.fIngreso.aceptar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean a = false;
-                for(int i=0;i<usuario.usuario.length;i++){
-                    if(usuario.usuario[i].getNombre().equals(fIngreso.txtNombre.getText())&&usuario.usuario[i].getDni().equals(fIngreso.txtContra.getText())){
-                        JOptionPane.showMessageDialog(null,"Usuario válido");
-                        a = true;
-                     
-                  
-                    }
+                
+                if(usuario.validarUsuario(fIngreso.txtNombre.getText(), fIngreso.txtContra.getText())){
+                    JOptionPane.showMessageDialog(null,"Usuario válido");
                 }
-                if(!a){
+                else{
                     JOptionPane.showMessageDialog(null,"Usuario inválido");
                 }
-                
             }
         });
         this.fIngreso.registrarse.addActionListener(new ActionListener(){

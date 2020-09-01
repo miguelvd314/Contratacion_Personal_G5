@@ -35,6 +35,26 @@ public class VectorUsuario {
         }
         return r;
     }
+    
+    public boolean buscarUsuario(String dni){
+        boolean a = false;
+        for(int i=0;i<usuario.length;i++){
+            if(dni.equals(usuario[i].getDni())){
+                a = true;
+            }
+        }
+        return a;
+    }
+    
+    public boolean validarUsuario(String nombre, String dni){
+        boolean a = false;
+        for(int i=0;i<usuario.length;i++){
+            if(usuario[i].getNombre().equals(nombre)&&usuario[i].getDni().equals(dni)){
+                a = true;
+            }
+        }
+        return a;
+    }
 
     private void redimensionar1() {
         int n = usuario.length;
