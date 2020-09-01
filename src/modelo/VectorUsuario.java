@@ -28,26 +28,6 @@ public class VectorUsuario {
         System.out.println(usuario[i]);
     }
     
-    public boolean buscarUsuario(String dni){
-        boolean a = false;
-        for(int i=0;i<usuario.length;i++){
-            if(dni.equals(usuario[i].getDni())){
-                a = true;
-            }
-        }
-        return a;
-    }
-    
-    public boolean validarUsuario(String nombre, String dni){
-        boolean a = false;
-        for(int i=0;i<usuario.length;i++){
-            if(usuario[i].getNombre().equals(nombre)&&usuario[i].getDni().equals(dni)){
-                a = true;
-            }
-        }
-        return a;
-    }
-    
     public String mostrarUsuario(){
         String r="";
         for(int i=0; i<usuario.length;i++){

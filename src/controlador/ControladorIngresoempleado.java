@@ -38,13 +38,20 @@ public class ControladorIngresoempleado {
   this.fempleado.Aceptar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+                boolean a = false;
                 
-                if(usuario.validarUsuario(fIngreso.txtNombre.getText(), fIngreso.txtContra.getText())){
-                    JOptionPane.showMessageDialog(null,"Usuario válido");
-                }
-                else{
+                    if(usuario.usuario[0].getNombre().equals(fempleado.usuario.getText())&&usuario.usuario[0].getDni().equals(fempleado.psw.getText())){
+                        JOptionPane.showMessageDialog(null,"Usuario válido");
+                        a = true;
+                             vcontrolador.iniciar();
+                             fempleado.usuario.setText("");
+                             fempleado.psw.setText("");
+                              fempleado.setVisible(false);
+                    }
+                if(!a){
                     JOptionPane.showMessageDialog(null,"Usuario inválido");
                 }
+                
             }
         });
    

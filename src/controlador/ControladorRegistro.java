@@ -32,17 +32,16 @@ public class ControladorRegistro {
         this.fRegistro.aceptar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(usuario.buscarUsuario(fRegistro.txtDni.getText())){
-                    JOptionPane.showMessageDialog(null,"DNI ya registrado");
-                }
-                else{
+                String codigo = fRegistro.txtDni.getText();
+                
+                if(usuario.validarDni(codigo)){
                     usuario.agregarCandidato(fRegistro.txtNombre.getText(), fRegistro.txtApellido.getText(), fRegistro.txtDni.getText());
                     fRegistro.setVisible(false);
                     fRegistro.txtApellido.setText("");
                     fRegistro.txtNombre.setText("");
                     fRegistro.txtDni.setText("");
                     fIngreso.setVisible(true);
-                }
+                }                
             }
         });
     }
