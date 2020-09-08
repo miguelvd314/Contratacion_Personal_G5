@@ -11,8 +11,9 @@ import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import modelo.Vacante;
 import vista.frmEditarVacante;
-import vista.frmRrhh;
+import vista.frmCrearVacante;
 import vista.frmIngreso;
+import vista.frmMenuEmpleado;
 
 /**
  *
@@ -24,10 +25,12 @@ public class ControladorEditarVacante {
     frmEditarVacante vista;
     Vacante modelo;
     frmIngreso fingreso;
+    frmMenuEmpleado fMenuEmpleado;
 
-    public ControladorEditarVacante(frmEditarVacante vista, Vacante vacante) {
+    public ControladorEditarVacante(frmEditarVacante vista, Vacante vacante, frmMenuEmpleado fMenuEmpleado) {
         this.vista =  vista;
         this.modelo = vacante;
+        this.fMenuEmpleado = fMenuEmpleado;
 
         this.vista.BtnGrabar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -51,8 +54,8 @@ public class ControladorEditarVacante {
     }
  
     private void regrasar(){
-        frmRrhh vista = new frmRrhh();
-       ControladorRrhh controlador = new ControladorRrhh(vista,Repositorio.modelovacante,fingreso);
+        frmCrearVacante vista = new frmCrearVacante();
+       ControladorCrearVacante controlador = new ControladorCrearVacante(vista, Repositorio.modelovacante, fingreso, fMenuEmpleado);
        controlador.iniciar();
         vista.setVisible(true);        
         this.vista.dispose();

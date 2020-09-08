@@ -16,25 +16,26 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Vacante;
 import modelo.VectorVacante;
 import vista.frmEditarVacante;
-import vista.frmRrhh;
+import vista.frmCrearVacante;
 import vista.frmIngreso;
 import vista.frmMenuEmpleado;
 /**
  *
  * @author Max
  */
-public class ControladorRrhh {
+public class ControladorCrearVacante {
     
-    frmRrhh vista;
+    frmCrearVacante vista;
     VectorVacante modelo;
     frmIngreso fingreso;
-    frmMenuEmpleado fmenuempleado;
+    frmMenuEmpleado fMenuEmpleado;
     
     
-    public ControladorRrhh(frmRrhh vista, VectorVacante modelo,frmIngreso fingreso ) {
+    public ControladorCrearVacante(frmCrearVacante vista, VectorVacante modelo,frmIngreso fingreso, frmMenuEmpleado fMenuEmpleado) {
         this.vista = vista;
         this.modelo = modelo;
         this.fingreso= fingreso;
+        this.fMenuEmpleado = fMenuEmpleado;
         
         
     
@@ -52,7 +53,7 @@ public class ControladorRrhh {
         
                         modelo.add( new Vacante(codigo, nombres, salario, numerov, descripcionv));
                         JOptionPane.showMessageDialog(vista, "Registro exitoso" , "Agregar Persona" , JOptionPane.INFORMATION_MESSAGE);
-                        limpiarcontroles();
+                        limpiarControles();
                     }else{
                         JOptionPane.showMessageDialog(vista, "Cóodigo ya esta registrado" , "Agregar Persona" , JOptionPane.ERROR_MESSAGE);
                     }
@@ -71,7 +72,7 @@ public class ControladorRrhh {
                     if( vista.BtnActualizar.getText().equalsIgnoreCase("Actualizar")){
                         String codigoeliminar = vista.TablaVacantes.getValueAt(fila, 0).toString();
                         modelo.remove(codigoeliminar);
-                        limpiarcontroles();
+                        limpiarControles();
                         JOptionPane.showMessageDialog(vista,"Registro eliminado", "Elimiar Persona" , JOptionPane.INFORMATION_MESSAGE );
                     }
                     else{
@@ -115,7 +116,7 @@ public class ControladorRrhh {
                         Vacante vac = new Vacante(codigov, nombres, salario, numerov, descripcion);
                         modelo.update(vac);
                         
-                        limpiarcontroles();
+                        limpiarControles();
                         habilitarControlesEdicion(false);
                         JOptionPane.showMessageDialog(vista,"Actualizacion exitosa", "Actualizar Persona" , JOptionPane.INFORMATION_MESSAGE );
                     }else {
@@ -133,7 +134,7 @@ public class ControladorRrhh {
             }
         });
         
-         this.vista.BtnCancelar.addActionListener(new ActionListener() {
+         this.vista.BtnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                /* if( vista.BtnEditar.getText().equalsIgnoreCase("Grabar")){
                     limpiarcontroles();
@@ -142,6 +143,9 @@ public class ControladorRrhh {
                 }*/
                
                 //regresar al menu empleado
+                limpiarControles();
+                vista.setVisible(false);
+                fMenuEmpleado.setVisible(true);
             }
         });
         
@@ -153,7 +157,7 @@ public class ControladorRrhh {
                     frmEditarVacante vacant = new frmEditarVacante();               
                     
                     Vacante  modelovacante =  modelo.getPersona(vista.TablaVacantes.getValueAt(fila, 0).toString());
-                    ControladorEditarVacante controlador = new ControladorEditarVacante(vacant,modelovacante);
+                    ControladorEditarVacante controlador = new ControladorEditarVacante(vacant, modelovacante, fMenuEmpleado);
                     controlador.iniciar_vista();
                     vacant.setVisible(true);   
                     vista.dispose();
@@ -199,7 +203,7 @@ public class ControladorRrhh {
     }
 */
 
-    private void limpiarcontroles() {
+    private void limpiarControles() {
         vista.txtCodigo.setText("");
         vista.TxtNombre.setText("");
         vista.TxtSalario.setText("");
@@ -218,7 +222,7 @@ public class ControladorRrhh {
             vista.btnAgregar.setEnabled(false);
             vista.BtnEliminar.setEnabled(false);
             vista.BtnEditar.setEnabled(true);
-            vista.BtnCancelar.setEnabled(true);
+            vista.BtnAtras.setEnabled(true);
             vista.BtnEditar.setText("Grabar");
             vista.txtCodigo.setEnabled(false);
             this.vista.TxtNombre.requestFocus();
@@ -228,7 +232,7 @@ public class ControladorRrhh {
             vista.btnAgregar.setEnabled(true);
             vista.BtnEliminar.setEnabled(true);
             vista.BtnEditar.setEnabled(true);
-            vista.BtnCancelar.setEnabled(false);
+            vista.BtnAtras.setEnabled(false);
             vista.BtnEditar.setText("Actualizar");
             vista.txtCodigo.setEnabled(true);
             this.vista.txtCodigo.requestFocus();
@@ -258,7 +262,7 @@ public class ControladorRrhh {
         this.vista.setLocationRelativeTo(null);
         this.vista.TablaVacantes.setAutoCreateRowSorter(true);
         //Repositorio.modelovacante.sort();  
-          limpiarcontroles();
+          limpiarControles();
         //habilitarControlesEdicion(false);
     }
         

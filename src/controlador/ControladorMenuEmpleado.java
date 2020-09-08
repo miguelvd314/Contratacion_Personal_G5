@@ -13,7 +13,7 @@ import modelo.VectorVacante;
 import vista.frmEditarVacante;
 import vista.frmMenuEmpleado;
 import vista.frmMenuPostulante;
-import vista.frmRrhh;
+import vista.frmCrearVacante;
 import vista.frmIngreso;
 import vista.frmIngreso;
 import controlador.ControladorIngreso;
@@ -28,15 +28,15 @@ import vista.frmlistaVacante;
 public class ControladorMenuEmpleado {
     
     frmMenuEmpleado fMenuEmpleado;
-    frmRrhh fRrhh;
+    frmCrearVacante fRrhh;
     frmEditarVacante fEditarVacante;
-    VectorVacante modeloVacante;
-    ControladorRrhh controladorRrhh;
+    VectorVacante vectorVacante;
+    ControladorCrearVacante controladorRrhh;
     frmIngreso fingreso;
-        VectorUsuario usuario;
+    VectorUsuario usuario;
     frmIngreso fIngreso;
     frmRegistro fRegistro;
-     frmMenuPostulante menupost;
+    frmMenuPostulante menupost;
     
     VectorEmpleado empleado;
     
@@ -45,16 +45,17 @@ public class ControladorMenuEmpleado {
     VectorVacante vectorvacante;
     frmlistaVacante flista;
     
-    ControladorMenuEmpleado(frmMenuEmpleado fMenuEmpleado){
+    ControladorMenuEmpleado(frmMenuEmpleado fMenuEmpleado, VectorVacante vectorVacante, frmIngreso fIngreso){
         this.fMenuEmpleado=fMenuEmpleado;
-        this.modeloVacante=modeloVacante;
+        this.vectorVacante = vectorVacante;
+        this.fIngreso = fIngreso;
    
         
        
         this.fMenuEmpleado.BtnSalir.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                //regresar al login
+                System.exit(0);
             }  
         });
 
@@ -63,8 +64,8 @@ public class ControladorMenuEmpleado {
             public void actionPerformed(ActionEvent e) {
                 boolean a = false;
          
-                      frmRrhh vistaRrhh=new frmRrhh();  
-                      ControladorRrhh controladorRrhh=new ControladorRrhh(vistaRrhh,modeloVacante,fingreso);
+                      frmCrearVacante vistaRrhh=new frmCrearVacante();  
+                      ControladorCrearVacante controladorRrhh=new ControladorCrearVacante(vistaRrhh, vectorVacante, fIngreso, fMenuEmpleado);
                       controladorRrhh.iniciar();
                       vistaRrhh.setVisible(true); 
                       fMenuEmpleado.setVisible(false);

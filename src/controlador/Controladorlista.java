@@ -6,7 +6,7 @@
 package controlador;
 import javax.swing.table.DefaultTableModel;
 import modelo.VectorVacante;
-import vista.frmRrhh;
+import vista.frmCrearVacante;
 import vista.frmlistaVacante;
 /**
  *
@@ -16,7 +16,7 @@ import vista.frmlistaVacante;
 public class Controladorlista {
     
     frmlistaVacante flista;
-    frmRrhh vista;
+    frmCrearVacante vista;
     VectorVacante modelo;
     public Controladorlista(frmlistaVacante flista) {
         this.flista = flista;

@@ -9,12 +9,12 @@ package vista;
  *
  * @author mavd_
  */
-public class frmRrhh extends javax.swing.JFrame {
+public class frmCrearVacante extends javax.swing.JFrame {
 
     /**
      * Creates new form frmUsuario
      */
-    public frmRrhh() {
+    public frmCrearVacante() {
         initComponents();
     }
 
@@ -47,7 +47,7 @@ public class frmRrhh extends javax.swing.JFrame {
         BtnEliminar = new javax.swing.JButton();
         BtnEditar = new javax.swing.JButton();
         BtnActualizar = new javax.swing.JButton();
-        BtnCancelar = new javax.swing.JButton();
+        BtnAtras = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -84,7 +84,7 @@ public class frmRrhh extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TxtNombre);
-        TxtNombre.setBounds(280, 110, 192, 19);
+        TxtNombre.setBounds(280, 110, 192, 22);
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,7 +92,7 @@ public class frmRrhh extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(180, 70, 64, 18);
         getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(280, 70, 192, 19);
+        txtCodigo.setBounds(280, 70, 192, 22);
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,7 +100,7 @@ public class frmRrhh extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(180, 150, 71, 18);
         getContentPane().add(TxtSalario);
-        TxtSalario.setBounds(280, 150, 192, 19);
+        TxtSalario.setBounds(280, 150, 192, 22);
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,7 +108,7 @@ public class frmRrhh extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(100, 190, 156, 18);
         getContentPane().add(TxtNumeroVacante);
-        TxtNumeroVacante.setBounds(280, 190, 192, 19);
+        TxtNumeroVacante.setBounds(280, 190, 192, 22);
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,9 +155,9 @@ public class frmRrhh extends javax.swing.JFrame {
         getContentPane().add(BtnActualizar);
         BtnActualizar.setBounds(530, 150, 120, 25);
 
-        BtnCancelar.setText("CANCELAR");
-        getContentPane().add(BtnCancelar);
-        BtnCancelar.setBounds(530, 190, 120, 25);
+        BtnAtras.setText("ATRAS");
+        getContentPane().add(BtnAtras);
+        BtnAtras.setBounds(530, 190, 120, 25);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoRegistrar.jpg"))); // NOI18N
         jLabel7.setText("CANCELAR");
@@ -188,28 +188,30 @@ public class frmRrhh extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmRrhh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCrearVacante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmRrhh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCrearVacante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmRrhh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCrearVacante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmRrhh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCrearVacante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmRrhh().setVisible(true);
+                new frmCrearVacante().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BtnActualizar;
-    public javax.swing.JButton BtnCancelar;
+    public javax.swing.JButton BtnAtras;
     public javax.swing.JButton BtnEditar;
     public javax.swing.JButton BtnEliminar;
     public javax.swing.JTextArea CuadroTxtDescripcion;

@@ -14,15 +14,15 @@ import vista.frmIngreso;
 import vista.frmMenuEmpleado;
 import vista.frmMenuPostulante;
 import vista.frmRegistro;
-import vista.frmRrhh;
+import vista.frmCrearVacante;
 import vista.frmlistaVacante;
 public class ControladorIngreso {
     VectorUsuario usuario;
     frmIngreso fIngreso;
     frmRegistro fRegistro;
-    frmRrhh fRrhh;
+    frmCrearVacante fRrhh;
     frmMenuPostulante menupost;
-    ControladorRrhh controladorRrhh;
+    ControladorCrearVacante controladorRrhh;
     VectorEmpleado empleado;
     frmMenuEmpleado fMenuEmpleado;
     ControladorMenuEmpleado ControladorMenuEmp;
@@ -30,10 +30,10 @@ public class ControladorIngreso {
     VectorVacante vectorvacante;
     frmlistaVacante flista;
     public ControladorIngreso(VectorUsuario usuario, frmIngreso fIngreso, frmRegistro fRegistro,VectorEmpleado empleado
-            ,frmMenuPostulante menupost,frmMenuEmpleado fMenuEmpleado){
+            ,frmMenuPostulante menupost,frmMenuEmpleado fMenuEmpleado, VectorVacante vectorVacante){
         this.fIngreso = fIngreso;
         this.fRegistro = fRegistro;
-    
+        this.vectorvacante = vectorVacante;
       
         ControladorRegistro  rcontrolador = new ControladorRegistro(usuario, fRegistro, fIngreso);
         
@@ -63,14 +63,15 @@ public class ControladorIngreso {
                         a = true;
                        
                         frmMenuEmpleado vistaMenuEmpleado=new frmMenuEmpleado();
-                        ControladorMenuEmpleado controladorMenuEmp=new ControladorMenuEmpleado(vistaMenuEmpleado);
+                        ControladorMenuEmpleado controladorMenuEmp=new ControladorMenuEmpleado(vistaMenuEmpleado, vectorVacante, fIngreso);
                         controladorMenuEmp.iniciar();
                         
-                       frmRrhh vista=new frmRrhh();  
+                       /*frmRrhh vista=new frmRrhh();  
                       ControladorRrhh controladorRrhh=new ControladorRrhh(vista,Repositorio.modelovacante,fIngreso);
-                      controladorRrhh.iniciar();
+                      controladorRrhh.iniciar();*/
                       
-                      vista.setVisible(true);
+                     // vista.setVisible(true);
+                     
                        fIngreso.setVisible(false);
 
                     }else if(!a){
