@@ -52,7 +52,7 @@ public class ControladorIngreso {
                         JOptionPane.showMessageDialog(null,"Usuario válido");
                         a = true;
                       frmMenuPostulante vistaMenu=new frmMenuPostulante();  
-                      ControladorMenuPostulante controladorMenu=new ControladorMenuPostulante(vistaMenu,flista);
+                      ControladorMenuPostulante controladorMenu=new ControladorMenuPostulante(menupost, flista, fRrhh, vectorvacante,fIngreso);
                       controladorMenu.iniciar();
                       vistaMenu.setVisible(true); 
                       fIngreso.setVisible(false);

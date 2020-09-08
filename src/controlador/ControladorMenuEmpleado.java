@@ -55,7 +55,8 @@ public class ControladorMenuEmpleado {
         this.fMenuEmpleado.BtnSalir.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                fIngreso.setVisible(true);
+                fMenuEmpleado.setVisible(false);
             }  
         });
 
