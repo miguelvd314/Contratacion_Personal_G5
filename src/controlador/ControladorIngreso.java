@@ -15,7 +15,7 @@ import vista.frmMenuEmpleado;
 import vista.frmMenuPostulante;
 import vista.frmRegistro;
 import vista.frmRrhh;
-
+import vista.frmlistaVacante;
 public class ControladorIngreso {
     VectorUsuario usuario;
     frmIngreso fIngreso;
@@ -28,6 +28,7 @@ public class ControladorIngreso {
     ControladorMenuEmpleado ControladorMenuEmp;
     frmEditarVacante fEditarVacante;
     VectorVacante vectorvacante;
+    frmlistaVacante flista;
     public ControladorIngreso(VectorUsuario usuario, frmIngreso fIngreso, frmRegistro fRegistro,VectorEmpleado empleado
             ,frmMenuPostulante menupost,frmMenuEmpleado fMenuEmpleado){
         this.fIngreso = fIngreso;
@@ -50,8 +51,8 @@ public class ControladorIngreso {
                 if(usuario.ingresar(fIngreso.txtNombre.getText(),fIngreso.txtContra.getText()) ){
                         JOptionPane.showMessageDialog(null,"Usuario válido");
                         a = true;
-                       frmMenuPostulante vistaMenu=new frmMenuPostulante();  
-                      ControladorMenuPostulante controladorMenu=new ControladorMenuPostulante(vistaMenu);
+                      frmMenuPostulante vistaMenu=new frmMenuPostulante();  
+                      ControladorMenuPostulante controladorMenu=new ControladorMenuPostulante(vistaMenu,flista);
                       controladorMenu.iniciar();
                       vistaMenu.setVisible(true); 
                       fIngreso.setVisible(false);
@@ -66,7 +67,7 @@ public class ControladorIngreso {
                         controladorMenuEmp.iniciar();
                         
                        frmRrhh vista=new frmRrhh();  
-                      ControladorRrhh controladorRrhh=new ControladorRrhh(vista,Repositorio.modelovacante);
+                      ControladorRrhh controladorRrhh=new ControladorRrhh(vista,Repositorio.modelovacante,fIngreso);
                       controladorRrhh.iniciar();
                       
                       vista.setVisible(true);

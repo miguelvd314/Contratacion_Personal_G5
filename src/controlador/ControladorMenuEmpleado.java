@@ -14,7 +14,13 @@ import vista.frmEditarVacante;
 import vista.frmMenuEmpleado;
 import vista.frmMenuPostulante;
 import vista.frmRrhh;
-
+import vista.frmIngreso;
+import vista.frmIngreso;
+import controlador.ControladorIngreso;
+import modelo.VectorEmpleado;
+import modelo.VectorUsuario;
+import vista.frmRegistro;
+import vista.frmlistaVacante;
 /**
  *
  * @author Max
@@ -26,6 +32,19 @@ public class ControladorMenuEmpleado {
     frmEditarVacante fEditarVacante;
     VectorVacante modeloVacante;
     ControladorRrhh controladorRrhh;
+    frmIngreso fingreso;
+        VectorUsuario usuario;
+    frmIngreso fIngreso;
+    frmRegistro fRegistro;
+     frmMenuPostulante menupost;
+    
+    VectorEmpleado empleado;
+    
+    ControladorMenuEmpleado ControladorMenuEmp;
+   
+    VectorVacante vectorvacante;
+    frmlistaVacante flista;
+    
     ControladorMenuEmpleado(frmMenuEmpleado fMenuEmpleado){
         this.fMenuEmpleado=fMenuEmpleado;
         this.modeloVacante=modeloVacante;
@@ -35,7 +54,7 @@ public class ControladorMenuEmpleado {
         this.fMenuEmpleado.BtnSalir.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                //regresar al login
             }  
         });
 
@@ -45,7 +64,7 @@ public class ControladorMenuEmpleado {
                 boolean a = false;
          
                       frmRrhh vistaRrhh=new frmRrhh();  
-                      ControladorRrhh controladorRrhh=new ControladorRrhh(vistaRrhh,modeloVacante);
+                      ControladorRrhh controladorRrhh=new ControladorRrhh(vistaRrhh,modeloVacante,fingreso);
                       controladorRrhh.iniciar();
                       vistaRrhh.setVisible(true); 
                       fMenuEmpleado.setVisible(false);

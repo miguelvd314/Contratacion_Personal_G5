@@ -27,7 +27,7 @@ public class frmMenuPostulante extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        vacante = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -42,17 +42,17 @@ public class frmMenuPostulante extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 40, 350, 35);
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("VACANTES");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(140, 130, 130, 25);
+        vacante.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
+        vacante.setForeground(new java.awt.Color(255, 255, 255));
+        vacante.setText("VACANTES");
+        getContentPane().add(vacante);
+        vacante.setBounds(140, 130, 130, 23);
 
         jButton3.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("ESTADO");
         getContentPane().add(jButton3);
-        jButton3.setBounds(140, 210, 130, 25);
+        jButton3.setBounds(140, 210, 130, 23);
 
         jButton4.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -64,7 +64,7 @@ public class frmMenuPostulante extends javax.swing.JFrame {
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("POSTULAR");
         getContentPane().add(jButton5);
-        jButton5.setBounds(140, 170, 130, 25);
+        jButton5.setBounds(140, 170, 130, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoRegistrar.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -109,12 +109,12 @@ public class frmMenuPostulante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton3;
     public javax.swing.JButton jButton4;
     public javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    public javax.swing.JButton vacante;
     // End of variables declaration//GEN-END:variables
 
 }

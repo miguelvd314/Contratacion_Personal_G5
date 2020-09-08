@@ -17,7 +17,8 @@ import modelo.Vacante;
 import modelo.VectorVacante;
 import vista.frmEditarVacante;
 import vista.frmRrhh;
-
+import vista.frmIngreso;
+import vista.frmMenuEmpleado;
 /**
  *
  * @author Max
@@ -26,12 +27,15 @@ public class ControladorRrhh {
     
     frmRrhh vista;
     VectorVacante modelo;
+    frmIngreso fingreso;
+    frmMenuEmpleado fmenuempleado;
     
     
-    
-    public ControladorRrhh(frmRrhh vista, VectorVacante modelo ) {
+    public ControladorRrhh(frmRrhh vista, VectorVacante modelo,frmIngreso fingreso ) {
         this.vista = vista;
         this.modelo = modelo;
+        this.fingreso= fingreso;
+        
         
     
         this.vista.btnAgregar.addActionListener(new ActionListener() {
@@ -131,11 +135,13 @@ public class ControladorRrhh {
         
          this.vista.BtnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                if( vista.BtnEditar.getText().equalsIgnoreCase("Grabar")){
+               /* if( vista.BtnEditar.getText().equalsIgnoreCase("Grabar")){
                     limpiarcontroles();
                     habilitarControlesEdicion(false);
-                    
-                }
+                                     
+                }*/
+               
+                //regresar al menu empleado
             }
         });
         

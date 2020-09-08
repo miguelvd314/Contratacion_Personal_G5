@@ -5,8 +5,11 @@
  */
 package controlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import vista.frmMenuPostulante;
-
+import vista.frmlistaVacante;
+import controlador.Controladorlista;
 /**
  *
  * @author Max
@@ -14,10 +17,23 @@ import vista.frmMenuPostulante;
 public class ControladorMenuPostulante {
     
     frmMenuPostulante fmenupost;
+    frmlistaVacante flista;
     
-    ControladorMenuPostulante(frmMenuPostulante postu){
+    ControladorMenuPostulante(frmMenuPostulante postu,frmlistaVacante flista){
         
         this.fmenupost=postu;
+        this.flista=flista;
+        this.fmenupost.vacante.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                     frmlistaVacante lista = new frmlistaVacante();
+                     Controladorlista clista = new Controladorlista(lista);
+                     clista.iniciarla();
+                     fmenupost.setVisible(false);
+                     
+               
+            }
+        });
         
     }
       public void iniciar(){

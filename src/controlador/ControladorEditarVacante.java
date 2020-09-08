@@ -12,6 +12,7 @@ import javax.swing.DefaultComboBoxModel;
 import modelo.Vacante;
 import vista.frmEditarVacante;
 import vista.frmRrhh;
+import vista.frmIngreso;
 
 /**
  *
@@ -22,6 +23,7 @@ public class ControladorEditarVacante {
     
     frmEditarVacante vista;
     Vacante modelo;
+    frmIngreso fingreso;
 
     public ControladorEditarVacante(frmEditarVacante vista, Vacante vacante) {
         this.vista =  vista;
@@ -50,7 +52,7 @@ public class ControladorEditarVacante {
  
     private void regrasar(){
         frmRrhh vista = new frmRrhh();
-       ControladorRrhh controlador = new ControladorRrhh(vista,Repositorio.modelovacante);
+       ControladorRrhh controlador = new ControladorRrhh(vista,Repositorio.modelovacante,fingreso);
        controlador.iniciar();
         vista.setVisible(true);        
         this.vista.dispose();
