@@ -63,7 +63,7 @@ public class ControladorIngreso {
                         a = true;
                        
                         frmMenuEmpleado vistaMenuEmpleado=new frmMenuEmpleado();
-                        ControladorMenuEmpleado controladorMenuEmp=new ControladorMenuEmpleado(vistaMenuEmpleado, vectorVacante, fIngreso);
+                        ControladorMenuEmpleado controladorMenuEmp=new ControladorMenuEmpleado(vistaMenuEmpleado, vectorVacante, fIngreso,empleado);
                         controladorMenuEmp.iniciar();
                         
                        /*frmRrhh vista=new frmRrhh();  

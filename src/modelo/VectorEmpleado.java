@@ -35,6 +35,11 @@ public class VectorEmpleado {
         }
         return result;
     }
+
+   
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
     
     
       public boolean salir(){

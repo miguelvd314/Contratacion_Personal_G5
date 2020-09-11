@@ -17,6 +17,7 @@ import vista.frmCrearVacante;
 import vista.frmIngreso;
 import vista.frmIngreso;
 import controlador.ControladorIngreso;
+import modelo.Empleado;
 import modelo.VectorEmpleado;
 import modelo.VectorUsuario;
 import vista.frmRegistro;
@@ -37,18 +38,16 @@ public class ControladorMenuEmpleado {
     frmIngreso fIngreso;
     frmRegistro fRegistro;
     frmMenuPostulante menupost;
-    
     VectorEmpleado empleado;
-    
     ControladorMenuEmpleado ControladorMenuEmp;
-   
     VectorVacante vectorvacante;
     frmlistaVacante flista;
     
-    ControladorMenuEmpleado(frmMenuEmpleado fMenuEmpleado, VectorVacante vectorVacante, frmIngreso fIngreso){
+    ControladorMenuEmpleado(frmMenuEmpleado fMenuEmpleado, VectorVacante vectorVacante, frmIngreso fIngreso,VectorEmpleado empleado){
         this.fMenuEmpleado=fMenuEmpleado;
         this.vectorVacante = vectorVacante;
         this.fIngreso = fIngreso;
+        this.empleado  = empleado;
    
         
        
@@ -57,6 +56,7 @@ public class ControladorMenuEmpleado {
             public void actionPerformed(ActionEvent e) {
                 fIngreso.setVisible(true);
                 fMenuEmpleado.setVisible(false);
+               empleado.setActivo(false);
             }  
         });
 
