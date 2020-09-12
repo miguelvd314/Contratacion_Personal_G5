@@ -14,7 +14,7 @@ import Interfaces.Colecciones;
  */
 public class VectorVacante implements Colecciones {
     
-     private Vacante[] vacante;
+    public Vacante[] vacante;
     private int indice, tamanho;
     private final String[] cabecera =  {"CODIGO","NOMBRE",
                             "SALARIO","NUMERO VACANTES", "DESCRIPCION VACANTE",

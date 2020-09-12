@@ -5,37 +5,15 @@ import Datos.Repositorio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import modelo.VectorEmpleado;
-
-import modelo.VectorUsuario;
-import modelo.VectorVacante;
-import vista.frmEditarVacante;
 import vista.frmIngreso;
 import vista.frmMenuEmpleado;
 import vista.frmMenuPostulante;
 import vista.frmRegistro;
-import vista.frmCrearVacante;
-import vista.frmlistaVacante;
+
 public class ControladorIngreso {
-    VectorUsuario usuario;
     frmIngreso fIngreso;
-    frmRegistro fRegistro;
-    frmCrearVacante fRrhh;
-    frmMenuPostulante menupost;
-    ControladorCrearVacante controladorRrhh;
-    VectorEmpleado empleado;
-    frmMenuEmpleado fMenuEmpleado;
-    ControladorMenuEmpleado ControladorMenuEmp;
-    frmEditarVacante fEditarVacante;
-    VectorVacante vectorvacante;
-    frmlistaVacante flista;
-    public ControladorIngreso(VectorUsuario usuario, frmIngreso fIngreso, frmRegistro fRegistro,VectorEmpleado empleado
-            ,frmMenuPostulante menupost,frmMenuEmpleado fMenuEmpleado, VectorVacante vectorVacante){
+    public ControladorIngreso(frmIngreso fIngreso){
         this.fIngreso = fIngreso;
-        this.fRegistro = fRegistro;
-        this.vectorvacante = vectorVacante;
-      
-        ControladorRegistro  rcontrolador = new ControladorRegistro(usuario, fRegistro, fIngreso);
         
         this.fIngreso.cancelar.addActionListener(new ActionListener(){
             @Override
@@ -47,32 +25,28 @@ public class ControladorIngreso {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean a = false;
-         
-                if(usuario.ingresar(fIngreso.txtNombre.getText(),fIngreso.txtContra.getText()) ){
-                        JOptionPane.showMessageDialog(null,"Usuario válido");
-                        a = true;
-                      frmMenuPostulante vistaMenu=new frmMenuPostulante();  
-                      ControladorMenuPostulante controladorMenu=new ControladorMenuPostulante(menupost, flista, fRrhh, vectorvacante,fIngreso);
-                      controladorMenu.iniciar();
-                      vistaMenu.setVisible(true); 
-                      fIngreso.setVisible(false);
+                
+                if(Repositorio.vUsuario.buscar(fIngreso.txtNombre.getText(),fIngreso.txtContra.getText())){
+                    int id = Repositorio.vUsuario.ingresar(fIngreso.txtNombre.getText(),fIngreso.txtContra.getText());
+                    JOptionPane.showMessageDialog(null,"Usuario válido");
+                    a = true;
+                    frmMenuPostulante fMenuPostulante=new frmMenuPostulante();  
+                    ControladorMenuPostulante cMenuPostulante = new ControladorMenuPostulante(fMenuPostulante,id);
+                    cMenuPostulante.iniciar();
+                    fIngreso.dispose();
                    
-                    }else if(empleado.ingresar(fIngreso.txtNombre.getText(),fIngreso.txtContra.getText())){
-                        
-                      JOptionPane.showMessageDialog(null,"Empleado de Rrhh");
+                    }else 
+                    
+                    if(Repositorio.vEmpleado.buscar(fIngreso.txtNombre.getText(),fIngreso.txtContra.getText())){
+                        int id = Repositorio.vEmpleado.ingresar(fIngreso.txtNombre.getText(),fIngreso.txtContra.getText());
+                        JOptionPane.showMessageDialog(null,"Empleado de Rrhh");
                         a = true;
                        
-                        frmMenuEmpleado vistaMenuEmpleado=new frmMenuEmpleado();
-                        ControladorMenuEmpleado controladorMenuEmp=new ControladorMenuEmpleado(vistaMenuEmpleado, vectorVacante, fIngreso,empleado);
-                        controladorMenuEmp.iniciar();
+                        frmMenuEmpleado fMenuEmpleado = new frmMenuEmpleado();
+                        ControladorMenuEmpleado cMenuEmpleado =new ControladorMenuEmpleado(fMenuEmpleado,id);
+                        cMenuEmpleado.iniciar();
+                        fIngreso.dispose();
                         
-                       /*frmRrhh vista=new frmRrhh();  
-                      ControladorRrhh controladorRrhh=new ControladorRrhh(vista,Repositorio.modelovacante,fIngreso);
-                      controladorRrhh.iniciar();*/
-                      
-                     // vista.setVisible(true);
-                     
-                       fIngreso.setVisible(false);
 
                     }else if(!a){
                       JOptionPane.showMessageDialog(null,"Usuario inválido");  
@@ -85,7 +59,9 @@ public class ControladorIngreso {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //RegistroControlador  rcontrolador = new RegistroControlador(usuario, fRegistro, fIngreso);
-                rcontrolador.iniciar();
+                frmRegistro fRegistro = new frmRegistro();
+                ControladorRegistro cRegistro = new ControladorRegistro(fRegistro);
+                cRegistro.iniciar();
                 fIngreso.txtNombre.setText("");
                 fIngreso.txtContra.setText("");
                 fIngreso.setVisible(false);

@@ -41,10 +41,19 @@ public class Empleado {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setActivo() {
         this.activo = activo;
     }
-
+    
+    public boolean salir(){
+        boolean result = false;
+        if(this.activo){
+            this.activo = false;
+            result = true;
+        }
+        return result;
+    }
+    
     @Override
     public String toString() {
         return "Empleado{" + "usuarioemp=" + usuarioemp + ", contraseñaemp=" + contraseñaemp + ", activo=" + activo + '}';

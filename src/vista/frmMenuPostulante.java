@@ -27,7 +27,7 @@ public class frmMenuPostulante extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        vacante = new javax.swing.JButton();
+        btnVacante = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -42,11 +42,11 @@ public class frmMenuPostulante extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 40, 350, 35);
 
-        vacante.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
-        vacante.setForeground(new java.awt.Color(255, 255, 255));
-        vacante.setText("VACANTES");
-        getContentPane().add(vacante);
-        vacante.setBounds(140, 130, 130, 23);
+        btnVacante.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
+        btnVacante.setForeground(new java.awt.Color(255, 255, 255));
+        btnVacante.setText("VACANTES");
+        getContentPane().add(btnVacante);
+        btnVacante.setBounds(140, 130, 130, 23);
 
         jButton3.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,12 +109,12 @@ public class frmMenuPostulante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnVacante;
     public javax.swing.JButton jButton3;
     public javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JButton salir;
-    public javax.swing.JButton vacante;
     // End of variables declaration//GEN-END:variables
 
 }

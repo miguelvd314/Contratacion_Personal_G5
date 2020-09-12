@@ -45,29 +45,34 @@ public class VectorUsuario {
         usuario = y;
     }
     
-     public boolean ingresar(String nombre, String dni){
+    public boolean buscar(String nombre, String dni){
         boolean result= false;
         for(int i=0;i<usuario.length;i++){
-        if(usuario[i].getNombre().equalsIgnoreCase(nombre) && 
+            if(usuario[i].getNombre().equalsIgnoreCase(nombre) && 
                 usuario[i].getDni().equals(dni) &&
-                !this.activo){
-            this.activo = true;
-            result= true;
+                !usuario[i].isActivo()){
+                    usuario[i].setActivo();
+                    result= true;
+            }
         }
-        
+        return result;
+    }
+    
+    public int ingresar(String nombre, String dni){
+        int result= -1;
+        for(int i=0;i<usuario.length;i++){
+        if(usuario[i].getNombre().equalsIgnoreCase(nombre) && 
+            usuario[i].getDni().equals(dni) &&
+            !usuario[i].isActivo()){
+                usuario[i].setActivo();
+                result= i;
+            }
         }
         return result;
     }
     
     
-      public boolean salir(){
-        boolean result = false;
-        if(this.activo){
-            this.activo = false;
-            result = true;
-        }
-        return result;
-    }
+      
     
     
     
