@@ -25,160 +25,148 @@ import vista.frmMenuEmpleado;
  */
 public class ControladorCrearVacante {
     
-    frmCrearVacante vista;
-    VectorVacante modelo;
-    frmIngreso fingreso;
-    frmMenuEmpleado fMenuEmpleado;
+    frmCrearVacante fCrearVacante;
+    int id;
     
-    
-    public ControladorCrearVacante(frmCrearVacante vista, VectorVacante modelo,frmIngreso fingreso, frmMenuEmpleado fMenuEmpleado) {
-        this.vista = vista;
-        this.modelo = modelo;
-        this.fingreso= fingreso;
-        this.fMenuEmpleado = fMenuEmpleado;
+    public ControladorCrearVacante(frmCrearVacante fCrearVacante, int id) {
+        this.fCrearVacante = fCrearVacante;
+        this.id = id;
         
-        
-    
-        this.vista.btnAgregar.addActionListener(new ActionListener() {
+        this.fCrearVacante.btnAgregar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 if(validar()){
-                    if(modelo.find(vista.txtCodigo.getText())== -1 ){
-                        String codigo = vista.txtCodigo.getText().toUpperCase();
-                        String nombres = vista.TxtNombre.getText().toUpperCase();
-                        String salario = vista.TxtSalario.getText().toUpperCase();
-                        String numerov = vista.TxtNumeroVacante.getText().toUpperCase();
-                        String descripcionv = vista.CuadroTxtDescripcion.getText().toUpperCase();
+                    if(Repositorio.vVacante.find(fCrearVacante.txtCodigo.getText())== -1 ){
+                        String codigo = fCrearVacante.txtCodigo.getText().toUpperCase();
+                        String nombres = fCrearVacante.TxtNombre.getText().toUpperCase();
+                        String salario = fCrearVacante.TxtSalario.getText().toUpperCase();
+                        String numerov = fCrearVacante.TxtNumeroVacante.getText().toUpperCase();
+                        String descripcionv = fCrearVacante.CuadroTxtDescripcion.getText().toUpperCase();
                         
                         
         
-                        modelo.add( new Vacante(codigo, nombres, salario, numerov, descripcionv));
-                        JOptionPane.showMessageDialog(vista, "Registro exitoso" , "Agregar Persona" , JOptionPane.INFORMATION_MESSAGE);
+                        Repositorio.vVacante.add( new Vacante(codigo, nombres, salario, numerov, descripcionv));
+                        JOptionPane.showMessageDialog(fCrearVacante, "Registro exitoso" , "Agregar Persona" , JOptionPane.INFORMATION_MESSAGE);
                         limpiarControles();
                     }else{
-                        JOptionPane.showMessageDialog(vista, "Cóodigo ya esta registrado" , "Agregar Persona" , JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(fCrearVacante, "Cóodigo ya esta registrado" , "Agregar Persona" , JOptionPane.ERROR_MESSAGE);
                     }
 
                 }else{
-                    JOptionPane.showMessageDialog(vista,"Debe ingresar valores en todos los campos ", "Agregar Persona" , JOptionPane.ERROR_MESSAGE  );
+                    JOptionPane.showMessageDialog(fCrearVacante,"Debe ingresar valores en todos los campos ", "Agregar Persona" , JOptionPane.ERROR_MESSAGE  );
                 }
             }
         });
                 
-        this.vista.BtnEliminar.addActionListener(new ActionListener() {
+        this.fCrearVacante.BtnEliminar.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e){
-                int fila = vista.TablaVacantes.getSelectedRow();
-                int columna = vista.TablaVacantes.getSelectedColumn();
+                int fila = fCrearVacante.TablaVacantes.getSelectedRow();
+                int columna = fCrearVacante.TablaVacantes.getSelectedColumn();
                 if( fila >= 0 ){
-                    if( vista.BtnActualizar.getText().equalsIgnoreCase("Actualizar")){
-                        String codigoeliminar = vista.TablaVacantes.getValueAt(fila, 0).toString();
-                        modelo.remove(codigoeliminar);
+                    if( fCrearVacante.BtnActualizar.getText().equalsIgnoreCase("Actualizar")){
+                        String codigoeliminar = fCrearVacante.TablaVacantes.getValueAt(fila, 0).toString();
+                        Repositorio.vVacante.remove(codigoeliminar);
                         limpiarControles();
-                        JOptionPane.showMessageDialog(vista,"Registro eliminado", "Elimiar Persona" , JOptionPane.INFORMATION_MESSAGE );
+                        JOptionPane.showMessageDialog(fCrearVacante,"Registro eliminado", "Elimiar Persona" , JOptionPane.INFORMATION_MESSAGE );
                     }
                     else{
-                        JOptionPane.showMessageDialog(vista, "Estas actualizando un registro de persona", "Elimiar Persona" , JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(fCrearVacante, "Estas actualizando un registro de persona", "Elimiar Persona" , JOptionPane.WARNING_MESSAGE);
                     }
                 }else{
-                    if(modelo.isVacio()){
-                        JOptionPane.showMessageDialog(vista,"No existen registros para eliminar" , "Elimiar Persona" , JOptionPane.WARNING_MESSAGE );
+                    if(Repositorio.vVacante.isVacio()){
+                        JOptionPane.showMessageDialog(fCrearVacante,"No existen registros para eliminar" , "Elimiar Persona" , JOptionPane.WARNING_MESSAGE );
                     }else{
-                        JOptionPane.showMessageDialog(vista,"Selecciones una fila de la tabla ", "Elimiar Persona" , JOptionPane.ERROR_MESSAGE );
+                        JOptionPane.showMessageDialog(fCrearVacante,"Selecciones una fila de la tabla ", "Elimiar Persona" , JOptionPane.ERROR_MESSAGE );
                     }
                 }
             }
         });
         
-       this.vista.BtnActualizar.addActionListener(new ActionListener() {
+       this.fCrearVacante.BtnActualizar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                int fila = vista.TablaVacantes.getSelectedRow();
-                int columna = vista.TablaVacantes.getSelectedColumn();
-                if( fila >= 0  &&  vista.BtnEditar.getText().equalsIgnoreCase("Actualizar")){
-                    Vacante v = modelo.getPersona(vista.TablaVacantes.getValueAt(fila, 0).toString());
-                    vista.txtCodigo.setText(v.getCodigo());
-                    vista.TxtNombre.setText(v.getNombrev());
-                    vista.TxtSalario.setText(v.getSalariov());
-                    vista.TxtNumeroVacante.setText(v.getNumerov());
-                    vista.CuadroTxtDescripcion.setText(v.getDescripcionv());
+                int fila = fCrearVacante.TablaVacantes.getSelectedRow();
+                int columna = fCrearVacante.TablaVacantes.getSelectedColumn();
+                if( fila >= 0  &&  fCrearVacante.BtnEditar.getText().equalsIgnoreCase("Actualizar")){
+                    Vacante v = Repositorio.vVacante.getPersona(fCrearVacante.TablaVacantes.getValueAt(fila, 0).toString());
+                    fCrearVacante.txtCodigo.setText(v.getCodigo());
+                    fCrearVacante.TxtNombre.setText(v.getNombrev());
+                    fCrearVacante.TxtSalario.setText(v.getSalariov());
+                    fCrearVacante.TxtNumeroVacante.setText(v.getNumerov());
+                    fCrearVacante.CuadroTxtDescripcion.setText(v.getDescripcionv());
                     
                    // int indice_tmp = Repositorio.arreglotipousuario.find(p.getTipoUsuario().getDescripcion());
                     //vista.cboTipoUsuario.setSelectedIndex(indice_tmp);
                     habilitarControlesEdicion(true);
                     
-                }else if( vista.BtnActualizar.getText().equalsIgnoreCase("Grabar")) {
+                }else if( fCrearVacante.BtnActualizar.getText().equalsIgnoreCase("Grabar")) {
                     if(validar()){
-                        String codigov = vista.txtCodigo.getText().toUpperCase();
-                        String nombres = vista.TxtNombre.getText().toUpperCase();
-                        String salario = vista.TxtSalario.getText().toUpperCase();
-                        String numerov = vista.TxtNumeroVacante.getText().toUpperCase();
-                        String descripcion=vista.CuadroTxtDescripcion.getText().toUpperCase();
+                        String codigov = fCrearVacante.txtCodigo.getText().toUpperCase();
+                        String nombres = fCrearVacante.TxtNombre.getText().toUpperCase();
+                        String salario = fCrearVacante.TxtSalario.getText().toUpperCase();
+                        String numerov = fCrearVacante.TxtNumeroVacante.getText().toUpperCase();
+                        String descripcion=fCrearVacante.CuadroTxtDescripcion.getText().toUpperCase();
                      
                       
                         Vacante vac = new Vacante(codigov, nombres, salario, numerov, descripcion);
-                        modelo.update(vac);
+                        Repositorio.vVacante.update(vac);
                         
                         limpiarControles();
                         habilitarControlesEdicion(false);
-                        JOptionPane.showMessageDialog(vista,"Actualizacion exitosa", "Actualizar Persona" , JOptionPane.INFORMATION_MESSAGE );
+                        JOptionPane.showMessageDialog(fCrearVacante,"Actualizacion exitosa", "Actualizar Persona" , JOptionPane.INFORMATION_MESSAGE );
                     }else {
-                        JOptionPane.showMessageDialog(vista, "Debe ingresar valores en todos los campos" , "Actualizar Persona" , JOptionPane.WARNING_MESSAGE );
+                        JOptionPane.showMessageDialog(fCrearVacante, "Debe ingresar valores en todos los campos" , "Actualizar Persona" , JOptionPane.WARNING_MESSAGE );
                     }
                 
                 }
                 else  {
-                    if(modelo.isVacio()){
-                        JOptionPane.showMessageDialog(vista,"No existen registros para actualizar" , "Actualizar Persona" , JOptionPane.WARNING_MESSAGE );
+                    if(Repositorio.vVacante.isVacio()){
+                        JOptionPane.showMessageDialog(fCrearVacante,"No existen registros para actualizar" , "Actualizar Persona" , JOptionPane.WARNING_MESSAGE );
                     }else{
-                        JOptionPane.showMessageDialog(vista,"Selecciones una fila de la tabla para Actualizar: ", "Actualizar Persona" , JOptionPane.ERROR_MESSAGE );
+                        JOptionPane.showMessageDialog(fCrearVacante,"Selecciones una fila de la tabla para Actualizar: ", "Actualizar Persona" , JOptionPane.ERROR_MESSAGE );
                     }
                 }
             }
         });
         
-         this.vista.BtnAtras.addActionListener(new ActionListener() {
+         this.fCrearVacante.BtnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               /* if( vista.BtnEditar.getText().equalsIgnoreCase("Grabar")){
-                    limpiarcontroles();
-                    habilitarControlesEdicion(false);
-                                     
-                }*/
-               
-                //regresar al menu empleado
                 limpiarControles();
-                vista.setVisible(false);
-                fMenuEmpleado.setVisible(true);
+                frmMenuEmpleado fMenuEmpleado = new frmMenuEmpleado();
+                ControladorMenuEmpleado cMenuEmpleado = new ControladorMenuEmpleado(fMenuEmpleado, id);
+                fCrearVacante.dispose();
+                cMenuEmpleado.iniciar();
             }
         });
         
-        this.vista.BtnEditar.addActionListener( new ActionListener() {
+        this.fCrearVacante.BtnEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int fila = vista.TablaVacantes.getSelectedRow();
-                if( fila >= 0) {
-                    frmEditarVacante vacant = new frmEditarVacante();               
+                int fila = fCrearVacante.TablaVacantes.getSelectedRow();
+                if( fila >= 0) {              
                     
-                    Vacante  modelovacante =  modelo.getPersona(vista.TablaVacantes.getValueAt(fila, 0).toString());
-                    ControladorEditarVacante controlador = new ControladorEditarVacante(vacant, modelovacante, fMenuEmpleado);
-                    controlador.iniciar_vista();
-                    vacant.setVisible(true);   
-                    vista.dispose();
+                    Vacante  vacante =  Repositorio.vVacante.getPersona(fCrearVacante.TablaVacantes.getValueAt(fila, 0).toString());
+                    frmEditarVacante fEditarVacante = new frmEditarVacante();
+                    ControladorEditarVacante cEditarVacante = new ControladorEditarVacante(fEditarVacante, id, vacante);
+                    cEditarVacante.iniciar();
+                    fCrearVacante.dispose();
                 }else {
-                    JOptionPane.showMessageDialog(vista,"Selecciones una fila de la tabla para Editar: ", "Editar Persona" , JOptionPane.ERROR_MESSAGE );                    
-                }    
+                    JOptionPane.showMessageDialog(fCrearVacante,"Selecciones una fila de la tabla para Editar: ", "Editar Persona" , JOptionPane.ERROR_MESSAGE );                    
+                    }
+                }
             }
-        }
         
         
         );
         
         
-        this.vista.TablaVacantes.addMouseListener(new MouseAdapter() {
+        this.fCrearVacante.TablaVacantes.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 String codigo=null;
-                int fila = vista.TablaVacantes.rowAtPoint(e.getPoint());
-                int columna = vista.TablaVacantes.columnAtPoint(e.getPoint());
+                int fila = fCrearVacante.TablaVacantes.rowAtPoint(e.getPoint());
+                int columna = fCrearVacante.TablaVacantes.columnAtPoint(e.getPoint());
                 if (fila > -1 ){
-                        System.out.println(vista.TablaVacantes.getValueAt(fila,1));
+                        System.out.println(fCrearVacante.TablaVacantes.getValueAt(fila,1));
                 }
             }
         });
@@ -204,50 +192,50 @@ public class ControladorCrearVacante {
 */
 
     private void limpiarControles() {
-        vista.txtCodigo.setText("");
-        vista.TxtNombre.setText("");
-        vista.TxtSalario.setText("");
-        vista.TxtNumeroVacante.setText("");
-        vista.CuadroTxtDescripcion.setText("");
+        fCrearVacante.txtCodigo.setText("");
+        fCrearVacante.TxtNombre.setText("");
+        fCrearVacante.TxtSalario.setText("");
+        fCrearVacante.TxtNumeroVacante.setText("");
+        fCrearVacante.CuadroTxtDescripcion.setText("");
        // vista.cboTipoUsuario.setSelectedIndex(-1);
-        DefaultTableModel modelotabla = new DefaultTableModel(this.modelo.getDatos(),this.modelo.getCabecera());
-        this.vista.TablaVacantes.setModel(modelotabla);
-        this.vista.txtCodigo.requestFocus();
-        this.vista.txtCodigo.selectAll();
+        DefaultTableModel modelotabla = new DefaultTableModel(Repositorio.vVacante.getDatos(),Repositorio.vVacante.getCabecera());
+        this.fCrearVacante.TablaVacantes.setModel(modelotabla);
+        this.fCrearVacante.txtCodigo.requestFocus();
+        this.fCrearVacante.txtCodigo.selectAll();
 
         
     }
     private void habilitarControlesEdicion(boolean editar){
         if (editar){
-            vista.btnAgregar.setEnabled(false);
-            vista.BtnEliminar.setEnabled(false);
-            vista.BtnEditar.setEnabled(true);
-            vista.BtnAtras.setEnabled(true);
-            vista.BtnEditar.setText("Grabar");
-            vista.txtCodigo.setEnabled(false);
-            this.vista.TxtNombre.requestFocus();
-            this.vista.TxtNombre.selectAll();
+            fCrearVacante.btnAgregar.setEnabled(false);
+            fCrearVacante.BtnEliminar.setEnabled(false);
+            fCrearVacante.BtnEditar.setEnabled(true);
+            fCrearVacante.BtnAtras.setEnabled(true);
+            fCrearVacante.BtnEditar.setText("Grabar");
+            fCrearVacante.txtCodigo.setEnabled(false);
+            this.fCrearVacante.TxtNombre.requestFocus();
+            this.fCrearVacante.TxtNombre.selectAll();
         }
         else {
-            vista.btnAgregar.setEnabled(true);
-            vista.BtnEliminar.setEnabled(true);
-            vista.BtnEditar.setEnabled(true);
-            vista.BtnAtras.setEnabled(false);
-            vista.BtnEditar.setText("Actualizar");
-            vista.txtCodigo.setEnabled(true);
-            this.vista.txtCodigo.requestFocus();
-            this.vista.txtCodigo.selectAll();
+            fCrearVacante.btnAgregar.setEnabled(true);
+            fCrearVacante.BtnEliminar.setEnabled(true);
+            fCrearVacante.BtnEditar.setEnabled(true);
+            fCrearVacante.BtnAtras.setEnabled(false);
+            fCrearVacante.BtnEditar.setText("Actualizar");
+            fCrearVacante.txtCodigo.setEnabled(true);
+            this.fCrearVacante.txtCodigo.requestFocus();
+            this.fCrearVacante.txtCodigo.selectAll();
         }
     }
 
    private boolean validar() {
         boolean resultado = false;
-        if (this.vista.txtCodigo.getText().length()!= 0 &&
-                this.vista.txtCodigo.getText().length()!= 0 &&
-                this.vista.TxtNombre.getText().length()!= 0 &&
-                this.vista.TxtSalario.getText().length()!= 0 &&
-                this.vista.TxtNumeroVacante.getText().length()!= 0 &&
-                 this.vista.CuadroTxtDescripcion.getText().length()!= 0 
+        if (this.fCrearVacante.txtCodigo.getText().length()!= 0 &&
+                this.fCrearVacante.txtCodigo.getText().length()!= 0 &&
+                this.fCrearVacante.TxtNombre.getText().length()!= 0 &&
+                this.fCrearVacante.TxtSalario.getText().length()!= 0 &&
+                this.fCrearVacante.TxtNumeroVacante.getText().length()!= 0 &&
+                 this.fCrearVacante.CuadroTxtDescripcion.getText().length()!= 0 
                 //this.vista.cboTipoUsuario.getSelectedIndex() != -1
                 ){
             resultado = true;
@@ -256,13 +244,13 @@ public class ControladorCrearVacante {
     }
     
         public void iniciar(){
-        this.vista.setVisible(true);
-        this.vista.setSize(720, 500);
-        this.vista.setResizable(false);
-        this.vista.setLocationRelativeTo(null);
-        this.vista.TablaVacantes.setAutoCreateRowSorter(true);
+        this.fCrearVacante.setVisible(true);
+        this.fCrearVacante.setSize(720, 500);
+        this.fCrearVacante.setResizable(false);
+        this.fCrearVacante.setLocationRelativeTo(null);
+        this.fCrearVacante.TablaVacantes.setAutoCreateRowSorter(true);
         //Repositorio.modelovacante.sort();  
-          limpiarControles();
+        limpiarControles();
         //habilitarControlesEdicion(false);
     }
         

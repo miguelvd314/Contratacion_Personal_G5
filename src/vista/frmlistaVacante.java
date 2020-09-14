@@ -27,19 +27,21 @@ public class frmlistaVacante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        lista = new javax.swing.JTable();
         Regresar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lista = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Lista de Convocatoria");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 32, 207, 47));
+        Regresar.setText("Regresar");
+        getContentPane().add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 244, -1, -1));
+
+        jButton2.setText("Postular");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 244, -1, -1));
 
         lista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -52,16 +54,17 @@ public class frmlistaVacante extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        getContentPane().add(lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 356, -1));
+        jScrollPane1.setViewportView(lista);
 
-        Regresar.setText("Regresar");
-        getContentPane().add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 80, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 112, 360, 40));
 
-        jButton2.setText("Postular");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Lista de Convocatoria");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 230, 34));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoRegistrar.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 250));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 4, 400, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,6 +109,7 @@ public class frmlistaVacante extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable lista;
     // End of variables declaration//GEN-END:variables
 }

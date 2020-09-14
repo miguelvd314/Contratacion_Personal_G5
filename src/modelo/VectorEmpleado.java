@@ -11,27 +11,37 @@ package modelo;
  */
 public class VectorEmpleado {
     
-        Empleado empleado[]=new Empleado[2];
+        public Empleado empleado[]=new Empleado[2];
         boolean activo=false;
-    public   VectorEmpleado(){
+        public   VectorEmpleado(){
            empleado[0]=new Empleado("cesar","2");
            empleado[1]=new Empleado("junior","1");
        }
     
     
     
-     public boolean ingresar(String usuarioemp, String contraseñaemp){
-         
+     public boolean buscar(String usuarioemp, String contraseñaemp){
         boolean result= false;
-      
         for(int i=0;i<empleado.length;i++){
-        if(empleado[i].getUsuarioemp().equals(usuarioemp) && 
-                empleado[i].getContraseñaemp().equals(contraseñaemp) &&
-                !this.activo){
-            this.activo = true;
-            result= true;
+            if(empleado[i].getUsuarioemp().equals(usuarioemp) && 
+                    empleado[i].getContraseñaemp().equals(contraseñaemp) &&
+                    !empleado[i].activo){
+                this.activo = true;
+                result= true;
+            }
         }
-        
+        return result;
+    }
+    
+    public int ingresar(String nombre, String dni){
+        int result= -1;
+        for(int i=0;i<empleado.length;i++){
+        if(empleado[i].getUsuarioemp().equalsIgnoreCase(nombre) && 
+            empleado[i].getContraseñaemp().equals(dni) &&
+            !empleado[i].isActivo()){
+                empleado[i].setActivo();
+                result= i;
+            }
         }
         return result;
     }
@@ -40,19 +50,5 @@ public class VectorEmpleado {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-    
-    
-      public boolean salir(){
-        boolean result = false;
-        if(this.activo){
-            this.activo = false;
-            result = true;
-        }
-        return result;
-    }
-    
-    
-    
-    
     
 }

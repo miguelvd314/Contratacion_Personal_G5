@@ -5,6 +5,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String dni;
+    private boolean activo;
  
     
     public Usuario(String nombre, String apellido, String dni){
@@ -43,4 +44,20 @@ public class Usuario {
 	return apellido + " " + nombre + " " + dni;
     }
         
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo() {
+        this.activo = activo;
+    }
+    
+    public boolean salir(){
+        boolean result = false;
+        if(this.activo){
+            this.activo = false;
+            result = true;
+        }
+        return result;
+    }
 }

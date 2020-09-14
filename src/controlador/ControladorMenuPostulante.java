@@ -5,62 +5,67 @@
  */
 package controlador;
 
+import Datos.Repositorio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vista.frmMenuPostulante;
 import vista.frmlistaVacante;
-import controlador.Controladorlista;
 import modelo.VectorVacante;
 import vista.frmCrearVacante;
 import vista.frmIngreso;
+import vista.frmPostular;
 /**
  *
  * @author Max
  */
 public class ControladorMenuPostulante {
     
-    frmMenuPostulante fmenupost;
-    frmlistaVacante flista;
-     frmCrearVacante vista;
-    VectorVacante modelo;
-    frmIngreso fingreso;
+    frmMenuPostulante fMenuPostulante;
+    int id;
     
-    
-    ControladorMenuPostulante(frmMenuPostulante postu,frmlistaVacante flista,frmCrearVacante vista,VectorVacante modelo,frmIngreso fingreso){
+    ControladorMenuPostulante(frmMenuPostulante fMenuPostulante, int id){
         
-        this.fmenupost=postu;
-        this.flista=flista;
-          this.modelo = modelo;
-        this.vista = vista;
-        this.fingreso= fingreso;
-        this.fmenupost.vacante.addActionListener(new ActionListener() {
+        this.fMenuPostulante = fMenuPostulante;
+        this.id = id;
+        
+        this.fMenuPostulante.btnPostular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                     frmlistaVacante lista = new frmlistaVacante();
-                     Controladorlista clista = new Controladorlista(lista, vista, modelo,postu);
-                     clista.iniciarla();
-                     fmenupost.setVisible(false);
-                     
-               
+                frmPostular fPostular = new frmPostular();
+                ControladorPostular cPostular = new ControladorPostular(fPostular);
+                fPostular.setVisible(true);
+                cPostular.Iniciar();
+                fMenuPostulante.setVisible(false);
             }
         });
         
-        this.fmenupost.salir.addActionListener(new ActionListener() {
+        this.fMenuPostulante.btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                fingreso.setVisible(true);
-               fmenupost.setVisible(false);
+                Repositorio.vUsuario.usuario[id].salir();
+                frmIngreso fIngreso = new frmIngreso();
+                ControladorIngreso cIngreso = new ControladorIngreso(fIngreso);
+                cIngreso.iniciar();
+                fMenuPostulante.dispose();
             }
         });
-        
+        this.fMenuPostulante.btnVacante.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+           frmlistaVacante fListaVacante = new frmlistaVacante();
+                     ControladorListaVacante cListaVacante = new ControladorListaVacante(fListaVacante, id);
+                     cListaVacante.iniciar();
+                     fMenuPostulante.dispose();
+            }
+        });
     }
-      public void iniciar(){
-        this.fmenupost.setVisible(true);
-        this.fmenupost.setSize(400, 400);
+    public void iniciar(){
+        this.fMenuPostulante.setVisible(true);
+        this.fMenuPostulante.setSize(400, 400);
         
-        this.fmenupost.setResizable(false);
+        this.fMenuPostulante.setResizable(false);
         
-        this.fmenupost.setLocationRelativeTo(null);
+        this.fMenuPostulante.setLocationRelativeTo(null);
     }
     
 }

@@ -14,7 +14,7 @@ import Interfaces.Colecciones;
  */
 public class VectorVacante implements Colecciones {
     
-     private Vacante[] vacante;
+    public Vacante[] vacante;
     private int indice, tamanho;
     private final String[] cabecera =  {"CODIGO","NOMBRE",
                             "SALARIO","NUMERO VACANTES", "DESCRIPCION VACANTE",
@@ -24,6 +24,15 @@ public class VectorVacante implements Colecciones {
         this.indice =0;
         this.tamanho =20;
         this.vacante = new Vacante[this.tamanho];
+        /*this.add(new Vacante("Operador"));
+        this.add(new Vacante("Supervisor"));    
+        this.add(new Vacante("Administrador"));
+        this.add(new Vacante("Coordinador"));;*/
+        for(int i = 0; i < tamanho; i++){
+            //String resultado;
+            //resultado = vacante[i].getNombrev();
+            //this.add(new Vacante(resultado));
+        }
     }
     
     @Override
@@ -155,10 +164,26 @@ public class VectorVacante implements Colecciones {
             }
         }        
     }
-
-   
     
+    public String[] tipoVacantes(){
+        String a[] = null;
+        
+        for(int i = 0; i < vacante.length; i++){
+            a[i] = vacante[i].getNombrev();
+        }
+        
+        return a; 
+    }
     
-    
-    
+    public Object[] getDatosCombo() {
+        Object resultado[] = null;
+        if(!isVacio()){
+            resultado = new Object[this.indice];
+            for(int indice=0; indice < this.indice; indice++){
+                //resultado[indice] = this.vacante[indice];
+                resultado[indice] = this.vacante[indice].getDescripcionv();
+            }
+        }
+        return resultado;
+    }
 }

@@ -5,10 +5,13 @@
  */
 package Datos;
 
+import controlador.ControladorMenuPostulante;
+import controlador.ControladorPostular;
 import modelo.Usuario;
 
 import modelo.VectorUsuario;
 import modelo.VectorVacante;
+import modelo.VectorEmpleado;
 
 /**
  *
@@ -17,9 +20,9 @@ import modelo.VectorVacante;
 public class Repositorio {
     
    
-    public static VectorUsuario admin= new VectorUsuario();
-    public static VectorVacante modelovacante = new VectorVacante();
-    
-    
+    //public static VectorUsuario admin= new VectorUsuario();
+    public static VectorVacante vVacante = new VectorVacante();
+    public static VectorEmpleado vEmpleado = new VectorEmpleado();
+    public static VectorUsuario vUsuario = new VectorUsuario();
     
 }

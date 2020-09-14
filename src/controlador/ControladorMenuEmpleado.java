@@ -9,19 +9,9 @@ import Datos.Repositorio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import modelo.VectorVacante;
-import vista.frmEditarVacante;
 import vista.frmMenuEmpleado;
-import vista.frmMenuPostulante;
 import vista.frmCrearVacante;
 import vista.frmIngreso;
-import vista.frmIngreso;
-import controlador.ControladorIngreso;
-import modelo.Empleado;
-import modelo.VectorEmpleado;
-import modelo.VectorUsuario;
-import vista.frmRegistro;
-import vista.frmlistaVacante;
 /**
  *
  * @author Max
@@ -29,57 +19,43 @@ import vista.frmlistaVacante;
 public class ControladorMenuEmpleado {
     
     frmMenuEmpleado fMenuEmpleado;
-    frmCrearVacante fRrhh;
-    frmEditarVacante fEditarVacante;
-    VectorVacante vectorVacante;
-    ControladorCrearVacante controladorRrhh;
-    frmIngreso fingreso;
-    VectorUsuario usuario;
-    frmIngreso fIngreso;
-    frmRegistro fRegistro;
-    frmMenuPostulante menupost;
-    VectorEmpleado empleado;
-    ControladorMenuEmpleado ControladorMenuEmp;
-    VectorVacante vectorvacante;
-    frmlistaVacante flista;
+    int id;
     
-    ControladorMenuEmpleado(frmMenuEmpleado fMenuEmpleado, VectorVacante vectorVacante, frmIngreso fIngreso,VectorEmpleado empleado){
-        this.fMenuEmpleado=fMenuEmpleado;
-        this.vectorVacante = vectorVacante;
-        this.fIngreso = fIngreso;
-        this.empleado  = empleado;
-   
-        
-       
+    ControladorMenuEmpleado(frmMenuEmpleado fMenuEmpleado, int id){
+        this.fMenuEmpleado = fMenuEmpleado;
+        this.id = id;
+
         this.fMenuEmpleado.BtnSalir.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                fIngreso.setVisible(true);
-                fMenuEmpleado.setVisible(false);
-               empleado.setActivo(false);
+                fMenuEmpleado.dispose();
+                frmIngreso fingreso = new frmIngreso();
+                ControladorIngreso cIngreso = new ControladorIngreso(fingreso);
+                cIngreso.iniciar();
+                Repositorio.vEmpleado.empleado[id].salir();
             }  
         });
 
         this.fMenuEmpleado.BtnCrearVacante.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean a = false;
-         
-                      frmCrearVacante vistaRrhh=new frmCrearVacante();  
-                      ControladorCrearVacante controladorRrhh=new ControladorCrearVacante(vistaRrhh, vectorVacante, fIngreso, fMenuEmpleado);
-                      controladorRrhh.iniciar();
-                      vistaRrhh.setVisible(true); 
-                      fMenuEmpleado.setVisible(false);
-                   
+                //boolean a = false;
+                    fMenuEmpleado.dispose();
+                    frmCrearVacante fCrearVacante = new frmCrearVacante();
+                    ControladorCrearVacante cCrearVacante = new ControladorCrearVacante(fCrearVacante, id);
                     
-            
+                    cCrearVacante.iniciar();
+                    
             }
         });
         
-
-        
-        
-        
+        this.fMenuEmpleado.BtnMostrarPostulantes.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+            
+        });
     }
   
     

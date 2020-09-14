@@ -22,56 +22,54 @@ import vista.frmMenuEmpleado;
 public class ControladorEditarVacante {
     
     
-    frmEditarVacante vista;
-    Vacante modelo;
-    frmIngreso fingreso;
-    frmMenuEmpleado fMenuEmpleado;
+    frmEditarVacante fEditarVacante;
+    Vacante editVacante;
+    int id;
 
-    public ControladorEditarVacante(frmEditarVacante vista, Vacante vacante, frmMenuEmpleado fMenuEmpleado) {
-        this.vista =  vista;
-        this.modelo = vacante;
-        this.fMenuEmpleado = fMenuEmpleado;
+    public ControladorEditarVacante(frmEditarVacante fEditarVacante, int id, Vacante vacante) {
+        this.fEditarVacante =  fEditarVacante;
+        this.id = id;
+        this.editVacante = vacante;
 
-        this.vista.BtnGrabar.addActionListener(new ActionListener() {
+        this.fEditarVacante.BtnGrabar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                modelo.setCodigo(vista.TxtCodigo.getText().toUpperCase());
-                modelo.setNombrev(vista.TxtNombre.getText().toUpperCase());
-                modelo.setSalariov(vista.TxtSalario.getText().toUpperCase());
-                modelo.setNumerov(vista.TxtNumerov.getText().toUpperCase());
-                 modelo.setDescripcionv(vista.CuadroDescripcion.getText().toUpperCase());
+                editVacante.setCodigo(fEditarVacante.TxtCodigo.getText().toUpperCase());
+                editVacante.setNombrev(fEditarVacante.TxtNombre.getText().toUpperCase());
+                editVacante.setSalariov(fEditarVacante.TxtSalario.getText().toUpperCase());
+                editVacante.setNumerov(fEditarVacante.TxtNumerov.getText().toUpperCase());
+                editVacante.setDescripcionv(fEditarVacante.CuadroDescripcion.getText().toUpperCase());
                 
-                regrasar();
+                regresar();
             }
         });
         
-        this.vista.BtnCancelar.addActionListener(new ActionListener() {
+        this.fEditarVacante.BtnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                regrasar();
+                regresar();
             }
         });
 
         
     }
  
-    private void regrasar(){
-        frmCrearVacante vista = new frmCrearVacante();
-       ControladorCrearVacante controlador = new ControladorCrearVacante(vista, Repositorio.modelovacante, fingreso, fMenuEmpleado);
-       controlador.iniciar();
-        vista.setVisible(true);        
-        this.vista.dispose();
+    private void regresar(){
+        frmCrearVacante fCrearVacante = new frmCrearVacante();
+        ControladorCrearVacante cCrearVacante = new ControladorCrearVacante(fCrearVacante,id);
+        cCrearVacante.iniciar();       
+        this.fEditarVacante.dispose();
     }
-    public void iniciar_vista(){
+    public void iniciar(){
      
 
-         this.vista.setSize(520, 450);
-         this.vista.setLocationRelativeTo(null);
-        this.vista.setVisible(true);
+        this.fEditarVacante.setSize(520, 450);
+        this.fEditarVacante.setLocationRelativeTo(null);
+        this.fEditarVacante.setVisible(true);
         
-        vista.TxtCodigo.setText(modelo.getCodigo());
-        vista.TxtNombre.setText(modelo.getNombrev());
-        vista.TxtSalario.setText(modelo.getSalariov());
-        vista.TxtNumerov.setText(modelo.getNumerov());
-        vista.CuadroDescripcion.setText(modelo.getDescripcionv());
+        fEditarVacante.TxtCodigo.setText(editVacante.getCodigo());
+        fEditarVacante.TxtNombre.setText(editVacante.getNombrev());
+        fEditarVacante.TxtSalario.setText(editVacante.getSalariov());
+        fEditarVacante.TxtNumerov.setText(editVacante.getNumerov());
+        fEditarVacante.CuadroDescripcion.setText(editVacante.getDescripcionv());
 
        /* DefaultComboBoxModel modelocombobox = new DefaultComboBoxModel();
         for( Object o : Repositorio.arreglotipousuario.getDatosCombo()){
