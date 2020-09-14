@@ -48,6 +48,14 @@ public class ControladorMenuEmpleado {
                     
             }
         });
+        
+        this.fMenuEmpleado.BtnMostrarPostulantes.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+            
+        });
     }
   
     

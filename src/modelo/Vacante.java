@@ -17,6 +17,7 @@ public class Vacante {
     private String salariov;
     private String numerov;
     private String descripcionv;
+    public static int id;
 
     public Vacante(String codigo, String nombrev, String salariov, String numerov, String descripcionv) {
         this.codigo = codigo;
@@ -25,11 +26,19 @@ public class Vacante {
         this.numerov = numerov;
         this.descripcionv = descripcionv;
     }
+    
+    public Vacante(String descripcion) {
+        this.descripcionv = descripcion;
+        this.codigo = String.valueOf(id);
+        id++;
+    }
 
     @Override
     public String toString() {
-        return "Vacante{" + "codigo=" + codigo + ", nombrev=" + nombrev + ", salariov=" + salariov + ", numerov=" + numerov + ", descripcionv=" + descripcionv + '}';
+        return descripcionv;
     }
+    
+    
 
     public String getCodigo() {
         return codigo;

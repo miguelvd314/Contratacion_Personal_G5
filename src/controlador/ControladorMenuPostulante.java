@@ -13,6 +13,7 @@ import vista.frmlistaVacante;
 import modelo.VectorVacante;
 import vista.frmCrearVacante;
 import vista.frmIngreso;
+import vista.frmPostular;
 /**
  *
  * @author Max
@@ -27,17 +28,18 @@ public class ControladorMenuPostulante {
         this.fMenuPostulante = fMenuPostulante;
         this.id = id;
         
-        this.fMenuPostulante.btnVacante.addActionListener(new ActionListener() {
+        this.fMenuPostulante.btnPostular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                     frmlistaVacante fListaVacante = new frmlistaVacante();
-                     ControladorListaVacante cListaVacante = new ControladorListaVacante(fListaVacante, id);
-                     cListaVacante.iniciar();
-                     fMenuPostulante.dispose();
+                frmPostular fPostular = new frmPostular();
+                ControladorPostular cPostular = new ControladorPostular(fPostular);
+                fPostular.setVisible(true);
+                cPostular.Iniciar();
+                fMenuPostulante.setVisible(false);
             }
         });
         
-        this.fMenuPostulante.salir.addActionListener(new ActionListener() {
+        this.fMenuPostulante.btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 Repositorio.vUsuario.usuario[id].salir();

@@ -5,6 +5,8 @@
  */
 package Datos;
 
+import controlador.ControladorMenuPostulante;
+import controlador.ControladorPostular;
 import modelo.Usuario;
 
 import modelo.VectorUsuario;
