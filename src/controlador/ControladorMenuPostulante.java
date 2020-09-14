@@ -49,7 +49,15 @@ public class ControladorMenuPostulante {
                 fMenuPostulante.dispose();
             }
         });
-        
+        this.fMenuPostulante.btnVacante.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+           frmlistaVacante fListaVacante = new frmlistaVacante();
+                     ControladorListaVacante cListaVacante = new ControladorListaVacante(fListaVacante, id);
+                     cListaVacante.iniciar();
+                     fMenuPostulante.dispose();
+            }
+        });
     }
     public void iniciar(){
         this.fMenuPostulante.setVisible(true);
