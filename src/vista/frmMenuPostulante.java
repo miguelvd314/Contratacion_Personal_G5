@@ -43,25 +43,25 @@ public class frmMenuPostulante extends javax.swing.JFrame {
         jLabel1.setBounds(30, 40, 350, 35);
 
         btnVacante.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
-        btnVacante.setForeground(new java.awt.Color(255, 255, 255));
+        btnVacante.setForeground(new java.awt.Color(51, 0, 51));
         btnVacante.setText("VACANTES");
         getContentPane().add(btnVacante);
         btnVacante.setBounds(140, 130, 130, 23);
 
         btnEstado.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
-        btnEstado.setForeground(new java.awt.Color(255, 255, 255));
+        btnEstado.setForeground(new java.awt.Color(51, 51, 0));
         btnEstado.setText("ESTADO");
         getContentPane().add(btnEstado);
         btnEstado.setBounds(140, 210, 130, 23);
 
         btnSalir.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setForeground(new java.awt.Color(51, 51, 0));
         btnSalir.setText("SALIR");
         getContentPane().add(btnSalir);
         btnSalir.setBounds(160, 320, 90, 25);
 
         btnPostular.setFont(new java.awt.Font("Arial Black", 3, 10)); // NOI18N
-        btnPostular.setForeground(new java.awt.Color(255, 255, 255));
+        btnPostular.setForeground(new java.awt.Color(51, 0, 51));
         btnPostular.setText("POSTULAR");
         btnPostular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

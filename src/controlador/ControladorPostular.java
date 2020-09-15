@@ -9,6 +9,7 @@ import Datos.Repositorio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import modelo.Vacante;
 import modelo.VectorVacante;
 import vista.frmMenuPostulante;
@@ -28,18 +29,12 @@ public class ControladorPostular {
         this.fPostular.btnPostular.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Vacante vacante = (Vacante)fPostular.cboVacantes.getSelectedItem();
+                int a = fPostular.cboVacantes.getSelectedIndex();
+                Repositorio.vVacante.PostulantesInscritos(a);
+                System.out.println(a);
             }
             
         });
-        
-        /*this.fPostular.cboVacantes.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-            
-        });*/
         
         this.fPostular.btnAtras.addActionListener(new ActionListener(){
             @Override
@@ -52,6 +47,17 @@ public class ControladorPostular {
             }
             
         });
+        
+        this.fPostular.cboVacantes.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                int seleccion = fPostular.cboVacantes.getSelectedIndex();
+                fPostular.jTextArea1.setText("");
+                fPostular.jTextArea1.append(Repositorio.vVacante.TextArea(seleccion));
+                Repositorio.vVacante.PostulantesInscritos(seleccion);
+            }
+            
+        });
     }
     
     public void Iniciar(){
@@ -60,6 +66,6 @@ public class ControladorPostular {
             modelocombobox.addElement(o);
         }
         this.fPostular.cboVacantes.setModel(modelocombobox);
-        fPostular.cboVacantes.setSelectedIndex(-1);
+        //fPostular.cboVacantes.setSelectedIndex(-1);
     }
 }

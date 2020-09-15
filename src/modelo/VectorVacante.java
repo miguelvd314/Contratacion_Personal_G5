@@ -180,10 +180,21 @@ public class VectorVacante implements Colecciones {
         if(!isVacio()){
             resultado = new Object[this.indice];
             for(int indice=0; indice < this.indice; indice++){
-                //resultado[indice] = this.vacante[indice];
-                resultado[indice] = this.vacante[indice].getDescripcionv();
+                resultado[indice] = this.vacante[indice].getNombrev();
             }
         }
         return resultado;
+    }
+    
+    public String TextArea(int seleccion){
+        String resultado = null;
+        
+        resultado = this.vacante[seleccion].getDescripcionv();
+        
+        return resultado;
+    }
+    
+    public void PostulantesInscritos(int seleccion){
+        int asd=seleccion;
     }
 }
